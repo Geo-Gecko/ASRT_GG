@@ -1,6 +1,6 @@
 import { loadLocationData } from "./actionTypes/actionTypes";
 import axios from "axios";
-let LocationUrl = `http://127.0.0.1:8000/location/`;
+let LocationUrl = `${process.env.REACT_APP_BACKEND_URL}/location/`;
 
 export const getLocation = () => {
   return dispatch => {

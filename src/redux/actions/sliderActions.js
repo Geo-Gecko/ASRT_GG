@@ -1,6 +1,8 @@
 import { sliderData } from "./actionTypes/actionTypes";
 import axios from "axios";
-let sliderUrl = `http://127.0.0.1:8000/sliders/`;
+let sliderUrl = `${process.env.REACT_APP_BACKEND_URL}/sliders/`;
+
+
 export const getSliderData = () => {
   function arrayColumn(agricIndicatorArraySet, counter) {
     if (agricIndicatorArraySet && typeof agricIndicatorArraySet !== undefined) {

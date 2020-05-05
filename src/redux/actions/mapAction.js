@@ -1,6 +1,6 @@
 import { loadGridData, updateGridData } from "./actionTypes/actionTypes";
 import axios from "axios";
-let mapUrl = `http://127.0.0.1:8000/mapGrids/`;
+let mapUrl = `${process.env.REACT_APP_BACKEND_URL}/mapGrids/`;
 
 export const getMapGrids = () => {
   return dispatch => {
