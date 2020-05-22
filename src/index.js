@@ -6,9 +6,6 @@ import App from "./App";
 import "leaflet/dist/leaflet.css";
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import FormDialog from "./Components/formDialog";
-import Form from "./Components/Form";
-import ToggleButton from "./Components/Togglebutton";
 // import ResponsiveDrawer from './Components/Analysis'
 
 //import * as serviceWorker from './serviceWorker';

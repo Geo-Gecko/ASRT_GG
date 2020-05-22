@@ -16,9 +16,6 @@ const styles = {
 };
 class CustomizedSlider extends React.Component {
   UpdatedIndicators = this.props.updatePieChartIndicators;
-  // mapData = _.cloneDeep(this.props.mapGrids);
-  // updatedmapData = _.cloneDeep(this.props.updatedMapGrids);
-  // selectedmapData = this.props.landCovermapUpdated == true ?_.cloneDeep(this.props.updatedMapGrids): _.cloneDeep(this.props.mapGrids);
 
   onSlide = (render, handle, value, un, percent) => {
     this.indicators = this.props.indicators;
@@ -48,7 +45,6 @@ class CustomizedSlider extends React.Component {
         }
       );
     }
-    // console.log(this.selectedmapData);
 
     this.props.dispatch({
       type: updateGridData,
@@ -62,7 +58,7 @@ class CustomizedSlider extends React.Component {
 
   render() {
     this.selectedmapData =
-      this.props.landCovermapUpdated == true
+      this.props.landCovermapUpdated === true
         ? _.cloneDeep(this.props.updatedMapGrids)
         : _.cloneDeep(this.props.mapGrids);
 
@@ -74,13 +70,11 @@ class CustomizedSlider extends React.Component {
     if (Array.isArray(newResult) && newResult.length) {
       value = newResult;
     }
-    if (this.props.chartView == true && this.props.mapUpdated == true) {
+    if (this.props.chartView === true && this.props.mapUpdated === true) {
       result = this.props.sliderValues;
       for (let [Key, values] of Object.entries(this.props.sliderValues)) {
-        if (Key == sliderKey) {
+        if (Key === sliderKey) {
           value = values;
-        } else {
-          value = value;
         }
       }
     }
@@ -123,7 +117,6 @@ const mapStateToProps = (state) => {
     locationValue: state.location.locationValue,
     DistrictGridcells: state.map.DistrictGridcells,
     updatedMapGrids: state.map.updatedMapGrids,
-    chartView: state.chart.chartView,
   };
 };
 

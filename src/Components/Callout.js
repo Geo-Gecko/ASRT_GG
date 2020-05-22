@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Callout from "react-callout-component";
 import "../App.css";
-import { StylesProvider } from "@material-ui/core/styles";
 
 export default class Callouts extends Component {
   constructor(props) {
@@ -20,7 +19,6 @@ export default class Callouts extends Component {
 
   render() {
     return (
-      // <StylesProvider injectFirst>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <div ref={this.boxEl}>{this.props.myComponent}</div>
         <Callout
@@ -34,7 +32,6 @@ export default class Callouts extends Component {
           <span style={{ color: "white" }}>{this.props.message}</span>
         </Callout>
       </div>
-      //  </StylesProvider>
     );
   }
 }

@@ -18,10 +18,10 @@ function Switches(props) {
     });
   };
   const showContent = state.checkedA;
-  if (showContent == true) {
+  if (showContent === true) {
     props.dispatch({ type: updateIndicatorSize, payload: props.chartData });
   }
-  if (showContent == false) {
+  if (showContent === false) {
     props.dispatch({
       type: updateIndicatorSizeSuccess,
       payload: props.agricTitle,

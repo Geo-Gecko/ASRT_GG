@@ -15,22 +15,15 @@ function Checkboxes(props) {
   result = result.map((sliderInfo) => sliderInfo);
   let newResult = result[checkboxKey];
   checkboxValue = newResult;
-  // console.log(checkboxValue);
-  // console.log(checkboxKey);
 
   let mapData = _.cloneDeep(props.mapGrids);
-  let updatedMapData = _.cloneDeep(props.updatedMapGrids);
-  // let selectedMapData = props.mapUpdated == true ? updatedMapData : mapData;
   let selectedMapData = mapData;
-  // console.log(selectedMapData);
 
   const [state, setState] = React.useState({ key: false });
   const handleChange = () => {
-    // event.preventDefault();
     setState({
       ...state,
       key: !state.key,
-      // value: props.landCoverSliderValues,
     });
    
     props.landCoverSliderValues[checkboxKey] = checkboxValue;
@@ -38,14 +31,13 @@ function Checkboxes(props) {
     for (let [landCoverKey, value] of Object.entries(
       props.landCoverSliderValues
     )) {
-      console.log(value, indicators[landCoverKey], props.label);
 
       selectedMapData[0][0].features = selectedMapData[0][0].features.filter(
         (piece) => {
           for (let [key, property] of Object.entries(piece.properties)) {
             if (
               key === "land_cover" &&
-              indicators[landCoverKey] == props.label
+              indicators[landCoverKey] === props.label
             ) {
               if (property < value) {
                 return false;
@@ -57,23 +49,11 @@ function Checkboxes(props) {
         }
       );
     }
-    console.log(selectedMapData);
-    // console.log(state.value);
 
     props.dispatch({ type: updateLandCoverGridData, payload: selectedMapData });
+    // this is in onChange so may bring up an error
+    return true
   };
-  // if (state.key == false) {
-  //   props.dispatch({ type: updateLandCoverGridData, payload: mapData });
-  // } else {
-  //   props.dispatch({ type: updateLandCoverGridData, payload: selectedMapData });
-
-  // }
-  // console.log(props.updatedMapGrids);
-  // console.log(mapData);
-  // if (props.mapUpdated == true) {
-  // console.log(selectedMapData);
-  //   console.log(props.updatedMapGrids);
-  // }
 
   return (
     <div>
@@ -83,7 +63,6 @@ function Checkboxes(props) {
             <Checkbox
               checked={state.key}
               onChange={handleChange}
-              // value={state.value}
               value={state.key === true ? props.landCoverSliderValues : 0}
               id={checkboxKey}
               inputProps={{ "aria-label": "checkbox with default color" }}

@@ -2,8 +2,6 @@ import {
   updateGridData,
   loadGridData,
   updateLandCoverGridData,
-  updateGridDataSuccess,
-  // updatePieChartData,
   updateIndicatorSize,
   updateIndicatorSizeSuccess,
 } from "../actions/actionTypes/actionTypes";
@@ -34,21 +32,12 @@ const mapReducer = (state = AppState.initialMapState, action) => {
       return {
         ...state,
         updateIndicatorSize: action.payload,
-        // updateInitialIndicatorSize: true,
       };
     case updateIndicatorSizeSuccess:
       return {
         ...state,
         updateIndicatorSize: action.payload,
-        // updateInitialIndicatorSize:false
       };
-    // case updateGridDataSuccess:
-    //   return {
-    //     ...state,
-        // updateInitialIndicatorSize: action.payload,
-        //     // mapGrids: action.payload,
-        //     mapUpdated: action.payload,
-      // };
 
     default:
       return state;

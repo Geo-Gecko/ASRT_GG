@@ -1,7 +1,6 @@
-import { Pie, Doughnut } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { updatePieChartDataSuccess } from "../redux/actions/actionTypes/actionTypes";
 
 class PieChartComponent extends Component {
   colors1 = ["red", "blue", "green", "yellow", "gray", "maroon", "brown"];

@@ -1,22 +1,16 @@
 import React, { Component } from "react";
-import L from "leaflet";
 import _ from "lodash";
 import {
   Map,
   TileLayer,
-  Marker,
-  ZoomControl,
   GeoJSON,
-  Popup,
 } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
 import {
-  updateGridDataSuccess,
   updatePieChartData,
   updateRainfallChartData,
   updateChartView,
-  districtGridcellsData,
   updatePopulationChartData,
 } from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
@@ -48,11 +42,6 @@ class UgMap extends Component {
     this.props.dispatch(getLocation());
     this.props.dispatch(getSliderData());
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.mapUpdated === true) {
-      // this.props.dispatch({ type: updateGridDataSuccess, payload: false });
-    }
-  }
   onEachFeature = (feature, layer) => {
     layer.on({
       mouseover: (e) => this.MouseOverFeature(e, feature),
@@ -77,7 +66,7 @@ class UgMap extends Component {
     let dist_ref = this.props.dist_ref;
 
     function checkDistrict(district) {
-      return district == e.target.feature.properties.DName2019;
+      return district === e.target.feature.properties.DName2019;
     }
     const map = this.refs.map.leafletElement;
 
@@ -105,13 +94,6 @@ class UgMap extends Component {
           dist_ref.findIndex(checkDistrict) + 1
       ) {
         var l = districtsdata["features"][element];
-        // l.setStyle({
-        //   weight: 2,
-        //   fillColor: "#3388ff",
-        //   color: "#e15c26",
-        //   fillOpacity: 0.0,
-        //   opacity: 0,
-        // });
 
         gridcellArray.push(l);
       } else {
@@ -143,36 +125,37 @@ class UgMap extends Component {
     this.magneValue = 0;
     this.PopulationNationalGridValue = 0;
     this.nationalGridcells = districtsdata.features;
-    this.nationalGridcells.filter((nationalGridcell) => {
+    this.nationalGridcells.forEach((nationalGridcell) => {
       for (let [sliderK, val] of Object.entries(
         nationalGridcell["properties"]
       )) {
-        if (sliderK == "rainfall") {
+        if (sliderK === "rainfall") {
           this.nationalGridValue += val;
-        } else if (sliderK == "ppp_sum") {
+        } else if (sliderK === "ppp_sum") {
           this.PopulationNationalGridValue += val;
         }
       }
+      return true
     });
     this.rf.filter((rfs) => {
       for (let [sliderK, val] of Object.entries(rfs)) {
-        if (sliderK == "rainfall") {
+        if (sliderK === "rainfall") {
           this.newValue += val;
-        } else if (sliderK == "ppp_sum") {
+        } else if (sliderK === "ppp_sum") {
           this.populationValue += val;
-        } else if (sliderK == "soil_copper") {
+        } else if (sliderK === "soil_copper") {
           this.copperValue += val;
-        } else if (sliderK == "soil_alumi") {
+        } else if (sliderK === "soil_alumi") {
           this.alumiValue += val;
-        } else if (sliderK == "soil_phos") {
+        } else if (sliderK === "soil_phos") {
           this.phosValue += val;
-        } else if (sliderK == "soil_potas") {
+        } else if (sliderK === "soil_potas") {
           this.potasValue += val;
-        } else if (sliderK == "soil_boron") {
+        } else if (sliderK === "soil_boron") {
           this.boronValue += val;
-        } else if (sliderK == "soil_iron") {
+        } else if (sliderK === "soil_iron") {
           this.ironValue += val;
-        } else if (sliderK == "soil_magne") {
+        } else if (sliderK === "soil_magne") {
           this.magneValue += val;
         }
       }
@@ -218,31 +201,31 @@ class UgMap extends Component {
     this.UpdatedIndicators = this.props.updatePieChartIndicators;
 
     for (let a = 0; a <= this.UpdatedIndicators.length; a++) {
-      if (this.UpdatedIndicators[a] == "soil_copper") {
+      if (this.UpdatedIndicators[a] === "soil_copper") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
         ] = this.copperValue;
-      } else if (this.UpdatedIndicators[a] == "soil_alumi") {
+      } else if (this.UpdatedIndicators[a] === "soil_alumi") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
         ] = this.alumiValue;
-      } else if (this.UpdatedIndicators[a] == "soil_phos") {
+      } else if (this.UpdatedIndicators[a] === "soil_phos") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
         ] = this.phosValue;
-      } else if (this.UpdatedIndicators[a] == "soil_potas") {
+      } else if (this.UpdatedIndicators[a] === "soil_potas") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
         ] = this.potasValue;
-      } else if (this.UpdatedIndicators[a] == "soil_boron") {
+      } else if (this.UpdatedIndicators[a] === "soil_boron") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
         ] = this.boronValue;
-      } else if (this.UpdatedIndicators[a] == "soil_iron") {
+      } else if (this.UpdatedIndicators[a] === "soil_iron") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
         ] = this.ironValue;
-      } else if (this.UpdatedIndicators[a] == "soil_magne") {
+      } else if (this.UpdatedIndicators[a] === "soil_magne") {
         this.piechartData[
           this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
         ] = this.magneValue;
@@ -290,7 +273,6 @@ class UgMap extends Component {
   }
 
   render() {
-    let status = this.state.district;
     let collectionOfGridcells = this.props.mapGrids;
     let districtData = districts;
     let data = districtData;
@@ -300,43 +282,43 @@ class UgMap extends Component {
       statusArea = "District: " + this.state.district;
     } else {
       data = collectionOfGridcells[0][0];
-      if (this.props.mapGrids[0] != undefined) {
+      if (this.props.mapGrids[0] !== undefined) {
         statusArea =
           "Total grid cells: " + data.features.length + " 5x5 square km";
       }
     }
 
     if (collectionOfGridcells[0]) {
-      this.state.map = (
-        <Map
-          className="map"
-          center={[this.props.lat, this.props.lng]}
-          zoom={this.props.zoom}
-          ref="map"
-          style={{ height: "550px", color: "#e15c26" }}
-          maxBounds={this.state.bounds}
-          maxZoom={10}
-          minZoom={this.props.zoom}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-            maxzoom="9"
-          />
-          <GeoJSON
-            key={this.props.mapGrids[0][0].features.length}
-            data={data}
-            ref="geojson"
-            onEachFeature={this.onEachFeature}
-          />
-          <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
-          <Control className="info" position="topright">
-            <div>{(status = statusArea)}</div>
-          </Control>
-          }
-        </Map>
-      );
-      return this.state.map;
+      let map_state =
+          <Map
+            className="map"
+            center={[this.props.lat, this.props.lng]}
+            zoom={this.props.zoom}
+            ref="map"
+            style={{ height: "550px", color: "#e15c26" }}
+            maxBounds={this.state.bounds}
+            maxZoom={10}
+            minZoom={this.props.zoom}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+              url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+              maxzoom="9"
+            />
+            <GeoJSON
+              key={this.props.mapGrids[0][0].features.length}
+              data={data}
+              ref="geojson"
+              onEachFeature={this.onEachFeature}
+            />
+            <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
+            <Control className="info" position="topright">
+              <div>{(statusArea)}</div>
+            </Control>
+            }
+          </Map>
+      // this.setState({map: map_state});
+      return map_state;
     } else return "Failed to load the map";
   }
 }

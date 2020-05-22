@@ -4,10 +4,9 @@ import Instagram from "../Images/Instagram.png";
 import { makeStyles } from "@material-ui/core/styles";
 import TwitterIcon from "@material-ui/icons/Twitter";
 import FaceBook from "../Images/FaceBook.png";
-import Gmail from "../Images/Gmail.svg";
 import { blue } from "@material-ui/core/colors";
 import FormDialog from "./formDialog";
-import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   horizontalSpacing: {

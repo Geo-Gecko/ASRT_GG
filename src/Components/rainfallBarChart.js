@@ -1,5 +1,4 @@
 import React from "react";
-import { Bar } from "react-chartjs-2";
 import { connect } from "react-redux";
 import { HorizontalBar } from "react-chartjs-2";
 

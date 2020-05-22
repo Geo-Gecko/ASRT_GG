@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -30,7 +30,7 @@ const ResponsiveDrawer = (props) => {
   let indicatorTitle = "AGRICULTURAL INDICATORS";
   let title = indicatorTitle;
   let data = <ControlledExpansionPanels />;
-  if (props.chartView == true && props.mapUpdated == true) {
+  if (props.chartView === true && props.mapUpdated === true) {
     layout = (
       <div>
         <div>
@@ -49,7 +49,7 @@ const ResponsiveDrawer = (props) => {
     );
     title = <Switches chartData={charts} agricTitle={indicatorTitle} />;
 
-    if (title["props"]["chartData"] == props.updateIndicatorSize) {
+    if (title["props"]["chartData"] === props.updateIndicatorSize) {
       drawerWidth = 600;
       finalLayout = layout;
     } else {
