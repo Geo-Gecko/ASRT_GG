@@ -23,7 +23,7 @@ import { connect } from "react-redux";
 import Switches from "./Togglebutton";
 
 const ResponsiveDrawer = (props) => {
-  let drawerWidth = 400;
+  let drawerWidth = 350;
   let finalLayout = <ControlledExpansionPanels />;
   let layout = "";
   let charts = "CHARTS";
@@ -53,7 +53,7 @@ const ResponsiveDrawer = (props) => {
       drawerWidth = 600;
       finalLayout = layout;
     } else {
-      drawerWidth = 400;
+      drawerWidth = 350;
       finalLayout = data;
     }
   }

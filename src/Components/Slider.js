@@ -10,7 +10,7 @@ import {
 const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
-  width: "300px",
+  width: "250px",
   marginLeft: "10px",
   marginBottom: "40px",
 };

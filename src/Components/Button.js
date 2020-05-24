@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: theme.spacing(2),
     fontWeight: 10,
-    padding: 3
+    padding: 3,
   },
   input: {
     display: "none"

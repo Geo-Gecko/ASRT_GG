@@ -10,7 +10,7 @@ import LandCover from "./Landcover";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop: 25,
+    marginTop: 10,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),

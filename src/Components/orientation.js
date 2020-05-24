@@ -17,7 +17,7 @@ import UgMap from "./maps";
 import ControlledExpansionPanels from "./SideBar";
 import "../App.css";
 
-const drawerWidth = 400;
+const drawerWidth =350;
 const useStyles = makeStyles(theme => ({
   root: {
     display: "flex"

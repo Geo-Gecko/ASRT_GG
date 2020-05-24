@@ -13,7 +13,7 @@ export default function FormDialog() {
   return (
     <div>
       <Link color="primary" onClick={handleClickOpen}>
-        Feedback
+        <span style={{ color: "#fff" }}>Feedback</span>
       </Link>
       <Dialog
         open={open}
