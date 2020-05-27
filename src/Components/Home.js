@@ -11,6 +11,7 @@ import MatIcons from "./MatIcons";
 import ContainedButtons from "./Button";
 import ControlledExpansionPanels from "./SideBar";
 import "../App.css";
+import UgMap from "./maps";
 
 const drawerWidth = 400;
 

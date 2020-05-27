@@ -5,5 +5,7 @@ import rootReducer from '../redux/reducers/reducersIndex';
 const initialState = {};
 
 const store = createStore(rootReducer, initialState, applyMiddleware(thunk));
+
+
 export default store;
  

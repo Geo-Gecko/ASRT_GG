@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -25,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
     margin: 7,
   },
 }));
+
+
 
 export default function ControlledExpansionPanels() {
   const classes = useStyles();
