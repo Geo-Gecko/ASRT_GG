@@ -1,14 +1,9 @@
 import React from "react";
 import "../App.css";
-import Instagram from "../Images/Instagram.png";
 import { makeStyles } from "@material-ui/core/styles";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import FaceBook from "../Images/FaceBook.png";
-import { blue } from "@material-ui/core/colors";
 import FormDialog from "./formDialog";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
   faInstagram,
   faGoogle,

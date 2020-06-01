@@ -3,7 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import ContainedButtons from "./Button";
-import geoLogo from "../Images/geoLogo.png";
+import geoLogo from "../Images/GG_Logo For Use on Maps_20200113.png";
 import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
