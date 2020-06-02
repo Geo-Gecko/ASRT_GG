@@ -19,7 +19,7 @@ class PieChartComponent extends Component {
       <div className="mega">
         <div className="charts">
           <h5 className="chartHeading">Soil Nutrients</h5>
-          <hr className="HR" />
+          </div>
           <Pie
             key={this.props.piechartData}
             data={{
@@ -41,7 +41,6 @@ class PieChartComponent extends Component {
             redraw={this.state.shouldRedraw}
           />
           <br />
-        </div>
       </div>
     );
   }

@@ -34,18 +34,22 @@ function Checkboxes(props) {
 
       selectedMapData[0][0].features = selectedMapData[0][0].features.filter(
         (piece) => {
+          let checkPropertyValue;
           for (let [key, property] of Object.entries(piece.properties)) {
             if (
               key === "land_cover" &&
               indicators[landCoverKey] === props.label
             ) {
               if (property < value) {
-                return false;
+                checkPropertyValue=false;
+                return checkPropertyValue;
               } else {
-                return true;
+                checkPropertyValue= true;
+                return checkPropertyValue;
               }
             }
           }
+          return checkPropertyValue;
         }
       );
     }

@@ -34,14 +34,18 @@ class CustomizedSlider extends React.Component {
 
       this.selectedmapData[0][0].features = this.selectedmapData[0][0].features.filter(
         (piece) => {
+          let propertyValue;
           for (let [key, property] of Object.entries(piece.properties)) {
             if (key === this.indicators[sliderKey]) {
               if (property < values[0] || property > values[1]) {
-                return false;
+                propertyValue= false;
+                return propertyValue;
               }
-              return true;
+              propertyValue= true;
+              return propertyValue;
             }
           }
+          return propertyValue;
         }
       );
     }

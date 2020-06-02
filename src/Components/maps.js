@@ -37,7 +37,7 @@ class UgMap extends Component {
     };
     this.geoJsonLayer = React.createRef();
   }
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.props.dispatch(getMapGrids());
     this.props.dispatch(getLocation());
     this.props.dispatch(getSliderData());
@@ -81,6 +81,7 @@ class UgMap extends Component {
           color: "#3388ff",
           dashArray: "",
           fillOpacity: 0.2,
+          fill: "#00aa55",
         });
       }
     });
@@ -114,15 +115,7 @@ class UgMap extends Component {
     );
     this.rf = aarrr;
     this.newValue = 0;
-    this.populationValue = 0;
     this.nationalGridValue = 0;
-    this.copperValue = 0;
-    this.alumiValue = 0;
-    this.phosValue = 0;
-    this.potasValue = 0;
-    this.boronValue = 0;
-    this.ironValue = 0;
-    this.magneValue = 0;
     this.PopulationNationalGridValue = 0;
     this.nationalGridcells = districtsdata.features;
     this.nationalGridcells.forEach((nationalGridcell) => {
@@ -142,23 +135,24 @@ class UgMap extends Component {
         if (sliderK === "rainfall") {
           this.newValue += val;
         } else if (sliderK === "ppp_sum") {
-          this.populationValue += val;
+          this.newValue += val;
         } else if (sliderK === "soil_copper") {
-          this.copperValue += val;
+          this.newValuee += val;
         } else if (sliderK === "soil_alumi") {
-          this.alumiValue += val;
+          this.newValue += val;
         } else if (sliderK === "soil_phos") {
-          this.phosValue += val;
+          this.newValue+= val;
         } else if (sliderK === "soil_potas") {
-          this.potasValue += val;
+          this.newValue += val;
         } else if (sliderK === "soil_boron") {
-          this.boronValue += val;
+          this.newValue += val;
         } else if (sliderK === "soil_iron") {
-          this.ironValue += val;
+          this.newValue+= val;
         } else if (sliderK === "soil_magne") {
-          this.magneValue += val;
+          this.newValue += val;
         }
       }
+      return this.newValue;
     });
 
     this.FinalValue = this.newValue / this.rf.length;
@@ -173,7 +167,7 @@ class UgMap extends Component {
       payload: this.rainfallchartData,
       averagenationalGridcells: this.averagenationalGridcells,
     });
-    this.populationFinalValue = this.populationValue / this.rf.length;
+    this.populationFinalValue = this.newValue / this.rf.length;
     this.populationFinalNationalValue =
       this.PopulationNationalGridValue / this.nationalGridcells.length;
     if (this.populationValue !== 0) {
@@ -190,13 +184,13 @@ class UgMap extends Component {
         .populationAverageNationalGridcells,
     });
 
-    this.copperValue = (this.copperValue / this.rf.length).toFixed(2);
-    this.alumiValue = (this.alumiValue / this.rf.length).toFixed(2);
-    this.phosValue = (this.phosValue / this.rf.length).toFixed(2);
-    this.potasValue = (this.potasValue / this.rf.length).toFixed(2);
-    this.boronValue = (this.boronValue / this.rf.length).toFixed(2);
-    this.ironValue = (this.ironValue / this.rf.length).toFixed(2);
-    this.magneValue = (this.magneValue / this.rf.length).toFixed(2);
+    this.copperValue = (this.newValue / this.rf.length).toFixed(2);
+    this.alumiValue = (this.newValue / this.rf.length).toFixed(2);
+    this.phosValue = (this.newValue / this.rf.length).toFixed(2);
+    this.potasValue = (this.newValue / this.rf.length).toFixed(2);
+    this.boronValue = (this.newValue / this.rf.length).toFixed(2);
+    this.ironValue = (this.newValue / this.rf.length).toFixed(2);
+    this.magneValue = (this.newValue / this.rf.length).toFixed(2);
 
     this.UpdatedIndicators = this.props.updatePieChartIndicators;
 
@@ -297,7 +291,7 @@ class UgMap extends Component {
             ref="map"
             style={{ height: "550px", color: "#e15c26" }}
             maxBounds={this.state.bounds}
-            maxZoom={10}
+            maxZoom={12}
             minZoom={this.props.zoom}
           >
             <TileLayer
@@ -317,7 +311,6 @@ class UgMap extends Component {
             </Control>
             }
           </Map>
-      // this.setState({map: map_state});
       return map_state;
     } else return "Failed to load the map";
   }

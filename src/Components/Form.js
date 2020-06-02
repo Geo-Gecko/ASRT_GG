@@ -71,8 +71,8 @@ class Form extends React.Component {
     let service_id = "default_service";
     let template_id = "tacofeedback";
     let user_id = "user_tDJDGDhY36xUilJYVFzi4";
-    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
+    // const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+   const mailformat= "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+[A-Za-z]{2,6}";
     if (
       this.state.reply_to.match(mailformat) &&
       this.state.message_html !== "" &&
