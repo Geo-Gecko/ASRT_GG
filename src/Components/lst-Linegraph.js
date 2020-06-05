@@ -8,7 +8,6 @@ const state = {
     {
       label: 'land surface temperature',
       fill: false,
-      // lineTension: 0.2,
       backgroundColor: 'rgba(75,192,192,1)',
       borderColor: 'rgba(75,192,192,1)',
       borderWidth: 6,
