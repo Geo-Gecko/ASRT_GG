@@ -12,7 +12,7 @@ import ContainedButtons from "./Button";
 import ControlledExpansionPanels from "./SideBar";
 import "../App.css";
 
-const drawerWidth = 400;
+const drawerWidth = 350;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -20,7 +20,6 @@ const useStyles = makeStyles(theme => ({
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1
-    // height: 128
   },
   drawer: {
     width: drawerWidth,
@@ -40,7 +39,6 @@ const useStyles = makeStyles(theme => ({
   },
   title: {
     flexGrow: 1
-    // paddingLeft: '40%'
   },
   spacing: {
     margin: 10
@@ -76,7 +74,6 @@ export default function ClippedDrawer() {
             <ContainedButtons caption="Orientation" />
           </Toolbar>
         </AppBar>
-        {/* <div id="sideBar"> */}
         <Drawer
           className={classes.drawer}
           variant="permanent"
@@ -95,13 +92,10 @@ export default function ClippedDrawer() {
           <MatIcons />
         </Drawer>
 
-        {/* <main className={classes.content}> */}
         <div className={classes.mappingstyles}>
           <UgMap />
         </div>
-        {/* </main> */}
       </div>
-      {/* </div> */}
     </StylesProvider>
   );
 }

@@ -10,7 +10,7 @@ import LandCover from "./Landcover";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    marginTop: 25,
+    marginTop: 10,
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -48,9 +48,7 @@ export default function ControlledExpansionPanels() {
           <Typography className={classes.heading}>Population</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          {/* <div className={classes.spacing}> */}
           <CustomizedSlider IndicatorSlider="" sliderKey={0} />
-          {/* </div> */}
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
@@ -135,7 +133,6 @@ export default function ControlledExpansionPanels() {
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
             <LandCover IndicatorSlider="land cover" />
-            {/* <CheckboxLabels /> */}
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>

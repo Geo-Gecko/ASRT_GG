@@ -8,8 +8,6 @@ const state = {
     {
       label: 'National vegetation health',
       fill: false,
-
-      // lineTension: 0.5,
       backgroundColor: 'rgba(75,192,192,1)',
       borderColor: '#77BB85',
 
@@ -19,9 +17,6 @@ const state = {
     {
       label: ' District vegetation health',
       fill: false,
-
-      // lineTension: 0.5,
-
       backgroundColor: 'rgba(75,192,192,1)',
       borderColor: '#77BB85',
       borderWidth: 6,

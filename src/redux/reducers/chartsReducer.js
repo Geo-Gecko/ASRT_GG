@@ -28,7 +28,6 @@ const chartReducer = (state = AppState.initialChartState, action) => {
         populationChartData: action.payload,
         populationAverageNationalGridcells:
           action.populationAverageNationalGridcells,
-        // pieChartDataUpdated: true,
       };
 
     case updateRainfallChartData:

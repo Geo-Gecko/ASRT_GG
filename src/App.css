@@ -14,22 +14,8 @@
   }
 }
 
-.App-header {
-  background-color: #2db44b;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 #FAQ {
   text-align: center;
-}
-
-.App-link {
-  color: #2db44b;
 }
 
 @keyframes App-logo-spin {
@@ -41,20 +27,10 @@
   }
 }
 #button {
-  /* background-color: #616161; */
   width: 100%;
   text-transform: capitalize;
-  /* border-radius: 15px; */
-  /* border: 1px solid #2AB34B; */
-  color: #616161;
+  color: #fff;
 }
-#button:hover {
-  /* background-color: #616161; */
-  color: #616161;
-  /* border-color: #77BB85; */
-}
-
-/* this css is for the charts that were designed by sabbiti */
 
 #whitediv {
   background-color: #fff;
@@ -67,31 +43,30 @@
   font-size: 50px;
 }
 .mega {
-  /* margin-bottom: 30px; */
-  margin-top: 15px;
-  border: solid;
-  border-color: #d3d0d0;
+  margin-top: 20px;
+  border:1px solid #137664;
   border-radius: 10px;
-  margin-left: 40px;
-  margin-right: 40px;
-  /* background-color: #77BB85; */
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #f1f8fe;
 }
 .chartHeading {
   text-align: center;
-  color: rgb(49, 51, 53);
+  color: #fff;
+
 }
-.HR {
-  width: "50%";
-  border-color: #d3d0d0;
-}
+
 .charts {
   width: "100%";
+  background-color: #137664;
+  border-bottom: 1px solid #137664;
+  border-radius: 8px;
+
+
 }
 
 .makeStyles-drawerPaper-6 {
   width: 300px;
-  /* background-color: rgb(43, 47, 58); */
-  background-color: #e15c26;
 }
 .map {
   height: 700px;
@@ -99,16 +74,9 @@
   margin-left: 0px;
   margin-top: 78px;
 }
-/* .ugmap{
-    margin-top: 0px;
-    width: 50%;
-    height: 80%;
-  } */
 
 .MuiPaper-root {
-  background-color: #fff;
-  border: #77bb85 solid 2px;
-  border-top: springgreen;
+  background-color: #137664;
 }
 
 #feedback {
@@ -126,58 +94,41 @@
 }
 .MuiAppBar-colorPrimary {
   color: rgb(243, 230, 230);
-  background-color: #2ab34b;
-  border: solid #77bb85 1px;
+  background-color: #137664;
   position: fixed;
-
   border-radius: 0.5em;
 }
 
-#indicatorText,#chartText {
-  color: #616161;
+#indicatorText,
+#chartText {
+  color: #fff;
   text-align: center;
-  background-color: #d0d0d0;
-  border-radius: 0.5em;
   padding: 0.3em;
   margin-top: 20px;
   margin-right: 10px;
   margin-left: 10px;
 }
 .Icons {
-  color: #fff;
-  /* display: inline; */
   position: relative;
-  bottom: -4em;
-  background-color: #d0d0d0;
+  bottom: -4.5em;
   padding: 0.7em;
-  border-radius: 0.5em;
   margin-right: 10px;
-  margin-left: 10px;
 }
 
-#twitter {
-  padding-right: 140px;
-  color: blue;
-  size: 50px;
-}
-
-#facebook {
-  color: blue;
-}
 .MuiExpansionPanel-rounded {
-  background-color: #2ab34b;
   color: #fff;
-  margin: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  border-bottom: #fff solid 2px;
 }
 .MuiExpansionPanel-rounded:first-child {
   border-top-left-radius: 0px;
   border-top-right-radius: 0px;
 }
-/* .MuiIconButton-root {
-  /* color: #fff; */
-
-/* } */
-*/ .makeStyles-heading-128 {
+.MuiIconButton-root {
+  color: #fff;
+}
+.makeStyles-heading-128 {
   font-size: large;
   font-weight: 100;
   flex-basis: 80%;
@@ -204,8 +155,6 @@
   padding: 6px 8px;
   font: 14px/16px Arial, Helvetica, sans-serif;
   background: #d0d0d0;
-  /* background: rgba(250, 243, 243, 0.603); */
-  /* box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); */
   border-color: black;
   border-radius: 5px;
   width: 150px;
@@ -219,7 +168,9 @@ a:link {
 
 path.leaflet-interactive {
   stroke: #959791;
-  fill: #2ab34b;
+  stroke-width: 1;
+  stroke-opacity: 2;
+  fill: #fff;
 }
 
 .MuiCheckbox-colorSecondary.Mui-checked {
@@ -238,9 +189,12 @@ path.leaflet-interactive {
   text-decoration: none;
 }
 .MuiSwitch-colorSecondary.Mui-checked {
-  color: #2ab34b;
+  color: #e15c26;
 }
 .MuiSwitch-track,
 .MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track {
-  background-color: #2ab34b;
+  background-color: #fff;
+}
+.barCharts {
+  display: flex;
 }

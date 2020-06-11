@@ -1,12 +1,15 @@
 import React from "react";
 import "../App.css";
-import Instagram from "../Images/Instagram.png";
 import { makeStyles } from "@material-ui/core/styles";
-import TwitterIcon from "@material-ui/icons/Twitter";
-import FaceBook from "../Images/FaceBook.png";
-import { blue } from "@material-ui/core/colors";
 import FormDialog from "./formDialog";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faInstagram,
+  faGoogle,
+  faFacebook,
+  faTwitter,
+} from "@fortawesome/free-brands-svg-icons";
 
 const useStyles = makeStyles((theme) => ({
   horizontalSpacing: {
@@ -17,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     height: 20,
     width: 25,
     marginLeft: "5%",
+    color: "#fff",
   },
 }));
 
@@ -25,7 +29,7 @@ export default function MatIcons() {
   return (
     <div className="Icons">
       <Link to="/faqs" target="_blank" rel="noopener noreferrer">
-        FAQS
+        <span style={{ color: "#fff" }}>FAQs</span>
       </Link>
       <div id="feedback">
         <FormDialog />
@@ -36,52 +40,28 @@ export default function MatIcons() {
         rel="noopener noreferrer"
         href="https://twitter.com/geogecko"
       >
-        <TwitterIcon
-          className={classes.navigation}
-          style={{ color: blue[500] }}
-        />
+        <FontAwesomeIcon className={classes.navigation} icon={faTwitter} />
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.instagram.com/geogecko1/"
       >
-        <img
-          src={Instagram}
-          target="blank"
-          alt="geo gecko logo"
-          className={classes.navigation}
-        />
+        <FontAwesomeIcon className={classes.navigation} icon={faInstagram} />
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.facebook.com/GeoGeckoUganda/"
       >
-        <img
-          src={FaceBook}
-          target="blank"
-          alt="geo gecko logo"
-          className={classes.navigation}
-        />
+        <FontAwesomeIcon className={classes.navigation} icon={faFacebook} />
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.geogecko.com/"
       >
-        <img
-          src="https://img.icons8.com/ultraviolet/120/000000/domain.png"
-          target="blank"
-          alt="geo gecko logo"
-          className={classes.navigation}
-        />
-        {/* <img
-          src={Gmail}
-          target="blank"
-          alt="geo gecko logo"
-          className={classes.navigation}
-        /> */}
+        <FontAwesomeIcon className={classes.navigation} icon={faGoogle} />
       </a>
     </div>
   );

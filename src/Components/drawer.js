@@ -17,50 +17,48 @@ import "../App.css";
 import UgMap from "./maps";
 import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
-
 import Population from "./populationBarchart";
 import { connect } from "react-redux";
-import Switches from "./Togglebutton";
-
 const ResponsiveDrawer = (props) => {
-  let drawerWidth = 400;
-  let finalLayout = <ControlledExpansionPanels />;
+  let drawerWidth = 350;
   let layout = "";
-  let charts = "CHARTS";
   let indicatorTitle = "AGRICULTURAL INDICATORS";
   let title = indicatorTitle;
   let data = <ControlledExpansionPanels />;
   if (props.chartView === true && props.mapUpdated === true) {
     layout = (
       <div>
-        <div>
-          <PieChartComponent />
+        <div className="row">
+          <div className="col-lg-6 col-sm-12 mr-0 population">
+            <div id="POPULATION">
+              <Population />
+            </div>
+          </div>
+          <div className="col-lg-6 col-sm-12 ml-0">
+            <div id="RAINFALL">
+              <Rainfall />
+            </div>
+          </div>
         </div>
-        <div style={{ margin: 10 }} />
-        <div id="RAINFALL">
-          <Rainfall />
+        <div className="row">
+          <div className="col-lg-6 col-sm-12">
+            <div>
+              <PieChartComponent />
+            </div>
+          </div>
+          <div className="col-lg-6 col-sm-12"></div>
         </div>
-        <div style={{ margin: 10 }} />
-        <div id="POPULATION">
-          <Population />
-        </div>
-        <div style={{ margin: 10 }} />
       </div>
     );
-    title = <Switches chartData={charts} agricTitle={indicatorTitle} />;
-
-    if (title["props"]["chartData"] === props.updateIndicatorSize) {
-      drawerWidth = 600;
-      finalLayout = layout;
-    } else {
-      drawerWidth = 400;
-      finalLayout = data;
-    }
   }
 
   const useStyles = makeStyles((theme) => ({
     root: {
       display: "flex",
+    },
+    chartContent: {
+      display: "block",
+      flexGrow: 1,
     },
     grow: {
       flexGrow: 1,
@@ -91,7 +89,6 @@ const ResponsiveDrawer = (props) => {
       width: drawerWidth,
     },
     content: {
-      flexGrow: 1,
       padding: theme.spacing(3),
     },
     closeMenuButton: {
@@ -159,8 +156,7 @@ const ResponsiveDrawer = (props) => {
                   <strong>{title}</strong>
                 </h6>
               </div>
-
-              {finalLayout}
+              {data}
               <Divider />
               <MatIcons />
             </Drawer>
@@ -179,14 +175,16 @@ const ResponsiveDrawer = (props) => {
                   <strong>{title}</strong>
                 </h6>
               </div>
-              {finalLayout}
-
+              {data}
               <Divider />
               <MatIcons />
             </Drawer>
           </Hidden>
         </nav>
-        <UgMap />
+        <div className={classes.chartContent}>
+          <UgMap />
+          {layout}
+        </div>
       </div>
     </StylesProvider>
   );

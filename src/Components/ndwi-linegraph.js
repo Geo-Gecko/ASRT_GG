@@ -9,7 +9,6 @@ const state = {
 
       label: 'National soil moisture',
       fill: false,
-      // lineTension: 0.5,
       backgroundColor: 'rgba(255,250,250,1)',
       borderColor: '#77BB85',
       borderWidth: 6,
@@ -18,7 +17,6 @@ const state = {
     {
       label: 'District soil moisture',
       fill: false,
-      // lineTension: 0.5,
       backgroundColor: 'rgba(255,250,250,1)',
       borderColor: '#616161',
       borderWidth: 6,

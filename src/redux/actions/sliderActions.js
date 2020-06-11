@@ -36,7 +36,7 @@ export const getSliderData = () => {
               sliderResults.push(result);
             } else {
               slidersample.filter(pice => {
-                landCoverResults.push(pice[11]);
+                return landCoverResults.push(pice[11]);
               });
             }
           }

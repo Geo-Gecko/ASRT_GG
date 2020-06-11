@@ -15,7 +15,6 @@ class Rainfall extends React.Component {
       <div className="mega">
         <div className="charts">
           <h5 className="chartHeading">Rainfall</h5>
-          <hr className="HR" />
         </div>
         <HorizontalBar
           key={this.props.rainfallchartData}

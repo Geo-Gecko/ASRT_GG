@@ -12,7 +12,6 @@ const useStyles = makeStyles((theme) => ({
     margin: 10,
   },
   calloutstyles: {
-    // height:100
     width: 200,
   },
 }));
@@ -29,7 +28,6 @@ export default function ExpansionSideBar() {
         message="These are the agricultural indicators available in this portal. Utilise the sliders with in these headings to filter 
       through the various agricultural indicators that fit your criteria."
       />
-      {/* <ControlledExpansionPanels /> */}
     </div>
   );
 }
