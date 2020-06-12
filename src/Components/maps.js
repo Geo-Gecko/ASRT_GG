@@ -130,29 +130,17 @@ class UgMap extends Component {
       }
       return true
     });
-    this.rf.filter((rfs) => {
+
+    let check_these = [
+      "rainfall", "ppp_sum", "soil_copper", "soil_alumi", "soil_magne",
+      "soil_phos", "soil_potas", "soil_boron", "soil_iron",
+    ]
+    this.rf.forEach((rfs) => {
       for (let [sliderK, val] of Object.entries(rfs)) {
-        if (sliderK === "rainfall") {
-          this.newValue += val;
-        } else if (sliderK === "ppp_sum") {
-          this.newValue += val;
-        } else if (sliderK === "soil_copper") {
-          this.newValuee += val;
-        } else if (sliderK === "soil_alumi") {
-          this.newValue += val;
-        } else if (sliderK === "soil_phos") {
-          this.newValue+= val;
-        } else if (sliderK === "soil_potas") {
-          this.newValue += val;
-        } else if (sliderK === "soil_boron") {
-          this.newValue += val;
-        } else if (sliderK === "soil_iron") {
-          this.newValue+= val;
-        } else if (sliderK === "soil_magne") {
+        if (check_these.includes(sliderK)) {
           this.newValue += val;
         }
       }
-      return this.newValue;
     });
 
     this.FinalValue = this.newValue / this.rf.length;
@@ -193,38 +181,20 @@ class UgMap extends Component {
     this.magneValue = (this.newValue / this.rf.length).toFixed(2);
 
     this.UpdatedIndicators = this.props.updatePieChartIndicators;
-
-    for (let a = 0; a <= this.UpdatedIndicators.length; a++) {
-      if (this.UpdatedIndicators[a] === "soil_copper") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.copperValue;
-      } else if (this.UpdatedIndicators[a] === "soil_alumi") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.alumiValue;
-      } else if (this.UpdatedIndicators[a] === "soil_phos") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.phosValue;
-      } else if (this.UpdatedIndicators[a] === "soil_potas") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.potasValue;
-      } else if (this.UpdatedIndicators[a] === "soil_boron") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.boronValue;
-      } else if (this.UpdatedIndicators[a] === "soil_iron") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.ironValue;
-      } else if (this.UpdatedIndicators[a] === "soil_magne") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.magneValue;
-      }
+    let pieChartValuesObject = {
+      "soil_copper": this.copperValue, "soil_alumi": this.alumiValue,
+      "soil_phos": this.phosValue, "soil_potas": this.potasValue,
+      "soil_boron": this.boronValue, "soil_iron": this.ironValue,
+      "soil_magne": this.magneValue
     }
+
+    Object.keys(pieChartValuesObject).forEach(key_ => {
+      if (this.UpdatedIndicators.includes(key_)) {
+        this.piechartData[
+          this.UpdatedIndicators.indexOf(key_)
+        ] = pieChartValuesObject[key_];
+      }
+    })
 
     this.props.dispatch({
       type: updatePieChartData,
