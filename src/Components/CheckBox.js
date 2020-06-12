@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -7,29 +7,39 @@ import _ from "lodash";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { updateLandCoverGridData } from "../redux/actions/actionTypes/actionTypes";
 
-function Checkboxes(props) {
-  let { checkboxKey } = props;
-  let checkboxValue = 0;
-  let indicators = props.landCoverIndicators;
-  let result = props.landCoverValue;
-  result = result.map((sliderInfo) => sliderInfo);
-  let newResult = result[checkboxKey];
-  checkboxValue = newResult;
+class Checkboxes extends Component {
 
-  let mapData = _.cloneDeep(props.mapGrids);
-  let selectedMapData = mapData;
+  constructor(props) {
+    super(props);
+    this.state = {
+      key: false,
+      tagCheckBox: parseFloat(Math.random().toFixed(3))
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  const [state, setState] = React.useState({ key: false });
-  const handleChange = () => {
-    setState({
-      ...state,
-      key: !state.key,
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.tagCheckBox === nextState.tagCheckBox ? false : true
+  }
+
+  handleChange() {
+    this.setState({
+      key: !this.state.key,
+      tagCheckBox: parseFloat(Math.random().toFixed(3))
     });
+  
+    let checkboxValue = 0;
+  
+    let result = this.props.landCoverValue;
+    result = result.map((sliderInfo) => sliderInfo);
+    let newResult = result[this.props.checkboxKey];
+    checkboxValue = newResult;
+    let selectedMapData = _.cloneDeep(this.props.mapGrids);;
    
-    props.landCoverSliderValues[checkboxKey] = checkboxValue;
+    this.props.landCoverSliderValues[this.props.checkboxKey] = checkboxValue;
     
     for (let [landCoverKey, value] of Object.entries(
-      props.landCoverSliderValues
+      this.props.landCoverSliderValues
     )) {
 
       selectedMapData[0][0].features = selectedMapData[0][0].features.filter(
@@ -38,7 +48,7 @@ function Checkboxes(props) {
           for (let [key, property] of Object.entries(piece.properties)) {
             if (
               key === "land_cover" &&
-              indicators[landCoverKey] === props.label
+              this.props.landCoverIndicators[landCoverKey] === this.props.label
             ) {
               if (property < value) {
                 checkPropertyValue=false;
@@ -54,29 +64,30 @@ function Checkboxes(props) {
       );
     }
 
-    props.dispatch({ type: updateLandCoverGridData, payload: selectedMapData });
+    this.props.dispatch({ type: updateLandCoverGridData, payload: selectedMapData });
     // this is in onChange so may bring up an error
     return true
   };
 
+  render() {
   return (
     <div>
       <FormGroup>
         <FormControlLabel
           control={
             <Checkbox
-              checked={state.key}
-              onChange={handleChange}
-              value={state.key === true ? props.landCoverSliderValues : 0}
-              id={checkboxKey}
+              checked={this.state.key}
+              onChange={this.handleChange}
+              value={this.state.key === true ? this.props.landCoverSliderValues : 0}
+              id={this.props.checkboxKey}
               inputProps={{ "aria-label": "checkbox with default color" }}
             />
           }
-          label={props.label}
+          label={this.props.label}
         />
       </FormGroup>
     </div>
-  );
+  )};
 }
 const mapStateToProps = (state) => {
   return {
