@@ -36,12 +36,6 @@
   background-color: #fff;
 }
 
-#CHARTS {
-  text-align: center;
-  margin-bottom: 35px;
-  color: #0d0d0d;
-  font-size: 50px;
-}
 .mega {
   margin-top: 20px;
   border:1px solid #137664;
@@ -49,6 +43,7 @@
   margin-left: 5px;
   margin-right: 5px;
   background-color: #f1f8fe;
+  height:300px;
 }
 .chartHeading {
   text-align: center;
@@ -61,10 +56,10 @@
   background-color: #137664;
   border-bottom: 1px solid #137664;
   border-radius: 8px;
-
-
 }
-
+.chartSection{
+  margin-top:50px;
+}
 .makeStyles-drawerPaper-6 {
   width: 300px;
 }
@@ -197,4 +192,20 @@ path.leaflet-interactive {
 }
 .barCharts {
   display: flex;
+}
+
+.MuiInputBase-input, .MuiInputLabel-root{
+  color:#fff;
+}
+.MuiFormControl-marginNormal{
+  width:90%;
+}
+.MuiInput-underline:before, .MuiInput-underline:after {
+  border-bottom: 1px solid #fff;
+}
+.MuiInput-underline:hover{
+    border-bottom: 1px solid #fff;
+}
+.MuiPickersCalendarHeader-iconButton {
+  background-color: #137664;
 }
