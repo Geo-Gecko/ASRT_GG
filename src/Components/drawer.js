@@ -19,6 +19,10 @@ import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
 import Population from "./populationBarchart";
 import { connect } from "react-redux";
+import MaterialUIPickers from "./DatePicker";
+import Ndvilinegraph from './ndvi-linegraph';
+import Ndwilinegraph from './ndwi-linegraph';
+import Temperature from './lst-Linegraph';
 const ResponsiveDrawer = (props) => {
   let drawerWidth = 350;
   let layout = "";
@@ -46,7 +50,19 @@ const ResponsiveDrawer = (props) => {
               <PieChartComponent />
             </div>
           </div>
-          <div className="col-lg-6 col-sm-12"></div>
+          <div className="col-lg-6 col-sm-12">
+          <Ndvilinegraph />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-6 col-sm-12">
+            <div>
+              <Temperature />
+            </div>
+          </div>
+          <div className="col-lg-6 col-sm-12">
+          <Ndwilinegraph />
+          </div>
         </div>
       </div>
     );
@@ -156,6 +172,7 @@ const ResponsiveDrawer = (props) => {
                   <strong>{title}</strong>
                 </h6>
               </div>
+              <MaterialUIPickers />
               {data}
               <Divider />
               <MatIcons />
@@ -175,6 +192,7 @@ const ResponsiveDrawer = (props) => {
                   <strong>{title}</strong>
                 </h6>
               </div>
+              <MaterialUIPickers />
               {data}
               <Divider />
               <MatIcons />

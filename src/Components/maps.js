@@ -17,7 +17,6 @@ import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
 import { getSliderData } from "../redux/actions/sliderActions";
 import districts from "../Components/uganda_districts_2019";
-
 class UgMap extends Component {
   bounds = [
     [-1.487315, 30.56346], // Southwest coordinates
@@ -49,7 +48,6 @@ class UgMap extends Component {
       click: (e) => this.ZoomToFeature(e, feature),
     });
   };
-
   highlightSelection(e, feature) {
     var layer = e.target;
     layer.setStyle({
@@ -59,10 +57,9 @@ class UgMap extends Component {
       fillOpacity: 0.7,
     });
   }
-
   ZoomToFeature(e, feature) {
     let gridcellArray = [];
-    let aarrr = [];
+    let propertiesArray = [];
     let dist_ref = this.props.dist_ref;
 
     function checkDistrict(district) {
@@ -86,7 +83,7 @@ class UgMap extends Component {
       }
     });
     let districtGridcells = this.props.mapGrids;
-    let districtsdata = districtGridcells[0][0];
+    let districtsdata = districtGridcells[0][0];    
     Object.keys(districtsdata["features"]).forEach((element) => {
       if (
         typeof districtsdata["features"][element] !== "undefined" &&
@@ -94,12 +91,12 @@ class UgMap extends Component {
         districtsdata["features"][element]["rsd_id"] !==
           dist_ref.findIndex(checkDistrict) + 1
       ) {
-        var l = districtsdata["features"][element];
+        var districtDetails = districtsdata["features"][element];
 
-        gridcellArray.push(l);
+        gridcellArray.push(districtDetails);
       } else {
-        var m = districtsdata["features"][element]["properties"];
-        aarrr.push(m);
+        var districtProperties = districtsdata["features"][element]["properties"];
+        propertiesArray.push(districtProperties);
       }
     });
 
@@ -113,61 +110,68 @@ class UgMap extends Component {
     this.populationAverageNationalGridcells = _.cloneDeep(
       this.props.populationAverageNationalGridcells
     );
-    this.rf = aarrr;
-    this.newValue = 0;
+    this.propertiesData = propertiesArray;
+    this.rainfallValue = 0;
     this.nationalGridValue = 0;
+    this.populationValue = 0;
     this.PopulationNationalGridValue = 0;
+    this.copperValue = 0;
+    this.alumiValue = 0;
+    this.phosValue = 0;
+    this.potasValue = 0;
+    this.boronValue = 0;
+    this.ironValue = 0;
+    this.magneValue = 0;
     this.nationalGridcells = districtsdata.features;
     this.nationalGridcells.forEach((nationalGridcell) => {
       for (let [sliderK, val] of Object.entries(
         nationalGridcell["properties"]
       )) {
         if (sliderK === "rainfall") {
-          this.nationalGridValue += val;
+          this.nationalGridValue += val;          
         } else if (sliderK === "ppp_sum") {
-          this.PopulationNationalGridValue += val;
+          this.PopulationNationalGridValue += val;          
         }
       }
       return true
     });
-    this.rf.filter((rfs) => {
+    this.propertiesData.filter((rfs) => {
       for (let [sliderK, val] of Object.entries(rfs)) {
         if (sliderK === "rainfall") {
-          this.newValue += val;
+          this.rainfallValue += val;
         } else if (sliderK === "ppp_sum") {
-          this.newValue += val;
+          this.populationValue += val;
         } else if (sliderK === "soil_copper") {
-          this.newValuee += val;
+          this.copperValue += val;
         } else if (sliderK === "soil_alumi") {
-          this.newValue += val;
+          this.alumiValue += val;
         } else if (sliderK === "soil_phos") {
-          this.newValue+= val;
+          this.phosValue+= val;
         } else if (sliderK === "soil_potas") {
-          this.newValue += val;
+          this.potasValue += val;
         } else if (sliderK === "soil_boron") {
-          this.newValue += val;
+          this.boronValue += val;
         } else if (sliderK === "soil_iron") {
-          this.newValue+= val;
+          this.ironValue+= val;
         } else if (sliderK === "soil_magne") {
-          this.newValue += val;
+          this.magneValue += val;
         }
       }
-      return this.newValue;
+      return true;
     });
-
-    this.FinalValue = this.newValue / this.rf.length;
-    this.FinalNationalValue =
+    this.rainfallValue = this.rainfallValue / this.propertiesData.length;
+    this.rainfallNationalValue =
       this.nationalGridValue / this.nationalGridcells.length;
-    if (this.newValue !== 0) {
-      this.rainfallchartData[0] = this.FinalValue.toFixed(2);
-      this.averagenationalGridcells[0] = this.FinalNationalValue.toFixed(2);
+    if (this.rainfallValue !== 0) {
+      this.rainfallchartData[0] =this.rainfallValue.toFixed(2);
+      this.averagenationalGridcells[0] = this.rainfallNationalValue.toFixed(2);
     }
     this.props.dispatch({
       type: updateRainfallChartData,
       payload: this.rainfallchartData,
       averagenationalGridcells: this.averagenationalGridcells,
     });
-    this.populationFinalValue = this.newValue / this.rf.length;
+    this.populationFinalValue = this.populationValue / this.propertiesData.length;
     this.populationFinalNationalValue =
       this.PopulationNationalGridValue / this.nationalGridcells.length;
     if (this.populationValue !== 0) {
@@ -176,21 +180,19 @@ class UgMap extends Component {
         2
       );
     }
-
     this.props.dispatch({
       type: updatePopulationChartData,
       payload: this.populationchartData,
       populationAverageNationalGridcells: this
         .populationAverageNationalGridcells,
     });
-
-    this.copperValue = (this.newValue / this.rf.length).toFixed(2);
-    this.alumiValue = (this.newValue / this.rf.length).toFixed(2);
-    this.phosValue = (this.newValue / this.rf.length).toFixed(2);
-    this.potasValue = (this.newValue / this.rf.length).toFixed(2);
-    this.boronValue = (this.newValue / this.rf.length).toFixed(2);
-    this.ironValue = (this.newValue / this.rf.length).toFixed(2);
-    this.magneValue = (this.newValue / this.rf.length).toFixed(2);
+    this.copperValue = (this.copperValue / this.propertiesData.length).toFixed(2);
+    this.alumiValue = (this.alumiValue / this.propertiesData.length).toFixed(2);
+    this.phosValue = (this.phosValue / this.propertiesData.length).toFixed(2);
+    this.potasValue = (this.potasValue / this.propertiesData.length).toFixed(2);
+    this.boronValue = (this.boronValue / this.propertiesData.length).toFixed(2);
+    this.ironValue = (this.ironValue / this.propertiesData.length).toFixed(2);
+    this.magneValue = (this.magneValue / this.propertiesData.length).toFixed(2);
 
     this.UpdatedIndicators = this.props.updatePieChartIndicators;
 
