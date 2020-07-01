@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/ASRT_GG/static/css/main.a19fd6df.chunk.css",
+    "main.js": "/ASRT_GG/static/js/main.99d2fe9d.chunk.js",
+    "main.js.map": "/ASRT_GG/static/js/main.99d2fe9d.chunk.js.map",
+    "runtime-main.js": "/ASRT_GG/static/js/runtime-main.cd17f889.js",
+    "runtime-main.js.map": "/ASRT_GG/static/js/runtime-main.cd17f889.js.map",
+    "static/css/2.ba87ed55.chunk.css": "/ASRT_GG/static/css/2.ba87ed55.chunk.css",
+    "static/js/2.019dd8ad.chunk.js": "/ASRT_GG/static/js/2.019dd8ad.chunk.js",
+    "static/js/2.019dd8ad.chunk.js.map": "/ASRT_GG/static/js/2.019dd8ad.chunk.js.map",
+    "index.html": "/ASRT_GG/index.html",
+    "precache-manifest.11fa1352dce37e839993dbbbe3b9c75e.js": "/ASRT_GG/precache-manifest.11fa1352dce37e839993dbbbe3b9c75e.js",
+    "service-worker.js": "/ASRT_GG/service-worker.js",
+    "static/css/2.ba87ed55.chunk.css.map": "/ASRT_GG/static/css/2.ba87ed55.chunk.css.map",
+    "static/css/main.a19fd6df.chunk.css.map": "/ASRT_GG/static/css/main.a19fd6df.chunk.css.map",
+    "static/js/2.019dd8ad.chunk.js.LICENSE.txt": "/ASRT_GG/static/js/2.019dd8ad.chunk.js.LICENSE.txt",
+    "static/media/geoLogo.png": "/ASRT_GG/static/media/geoLogo.ccb98897.png",
+    "static/media/geogecko.png": "/ASRT_GG/static/media/geogecko.efa29216.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cd17f889.js",
+    "static/css/2.ba87ed55.chunk.css",
+    "static/js/2.019dd8ad.chunk.js",
+    "static/css/main.a19fd6df.chunk.css",
+    "static/js/main.99d2fe9d.chunk.js"
+  ]
+}
