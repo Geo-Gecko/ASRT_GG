@@ -12,8 +12,9 @@ const useStyles = makeStyles((theme) => ({
   },
   calloutstyles: {
     width: 200,
-    marginLeft: -350,
-  },
+    marginLeft: 220,
+    marginTop:250,
+  }
 }));
 export default function ExpansionMaps() {
   const classes = useStyles();
@@ -21,7 +22,7 @@ export default function ExpansionMaps() {
     <div className={classes.root}>
       <Callouts
         myComponent={<UgMap />}
-        side="left"
+        side="center"
         arrowsize={0}
         styles={classes.calloutstyles}
         message="This map shows district boundaries and reflects the  various changes as per the user's filtering via the sliders"

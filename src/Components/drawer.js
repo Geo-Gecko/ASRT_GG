@@ -20,9 +20,9 @@ import Rainfall from "./rainfallBarChart";
 import Population from "./populationBarchart";
 import { connect } from "react-redux";
 import MaterialUIPickers from "./DatePicker";
-import Ndvilinegraph from './ndvi-linegraph';
-import Ndwilinegraph from './ndwi-linegraph';
-import Temperature from './lst-Linegraph';
+import Ndvilinegraph from "./ndvi-linegraph";
+import Ndwilinegraph from "./ndwi-linegraph";
+import Temperature from "./lst-Linegraph";
 const ResponsiveDrawer = (props) => {
   let drawerWidth = 350;
   let layout = "";
@@ -51,7 +51,7 @@ const ResponsiveDrawer = (props) => {
             </div>
           </div>
           <div className="col-lg-6 col-sm-12">
-          <Ndvilinegraph />
+            <Ndvilinegraph />
           </div>
         </div>
         <div className="row">
@@ -61,7 +61,7 @@ const ResponsiveDrawer = (props) => {
             </div>
           </div>
           <div className="col-lg-6 col-sm-12">
-          <Ndwilinegraph />
+            <Ndwilinegraph />
           </div>
         </div>
       </div>
@@ -168,9 +168,7 @@ const ResponsiveDrawer = (props) => {
                 <CloseIcon />
               </IconButton>
               <div id="indicatorText">
-                <h6>
-                  <strong>{title}</strong>
-                </h6>
+                <h5>{title}</h5>
               </div>
               <MaterialUIPickers />
               {data}
@@ -188,9 +186,7 @@ const ResponsiveDrawer = (props) => {
             >
               <div className={classes.toolbar} />
               <div id="indicatorText">
-                <h6>
-                  <strong>{title}</strong>
-                </h6>
+                <h5>{title}</h5>
               </div>
               <MaterialUIPickers />
               {data}

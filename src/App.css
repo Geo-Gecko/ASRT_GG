@@ -14,10 +14,6 @@
   }
 }
 
-#FAQ {
-  text-align: center;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -82,6 +78,15 @@
 }
 #faq {
   background-color: #e15c26;
+  text-align: center;
+  height: 100vh;
+}
+.faqContent{
+  width: 60%;
+margin:5% 20%;
+}
+#faqTitle{
+  padding-top: 10px;
 }
 #pic {
   width: 500px;
@@ -114,7 +119,7 @@
   color: #fff;
   margin-left: 2%;
   margin-right: 2%;
-  border-bottom: #fff solid 2px;
+  border-bottom: 1px solid #fff;
 }
 .MuiExpansionPanel-rounded:first-child {
   border-top-left-radius: 0px;
@@ -174,14 +179,17 @@ path.leaflet-interactive {
 #contact-form {
   width: 400px;
   padding: 10px;
+  color:#fff;
 }
 .btn-primary {
   color: #fff;
-  background-color: #2ab34b;
-  border-color: #2ab34b;
+  background-color: #137664;
+  border-color: #879e9a;
 }
 .btn-primary:hover {
-  text-decoration: none;
+  color: #137664;
+  background-color: #fff;
+  border-color: #879e9a;
 }
 .MuiSwitch-colorSecondary.Mui-checked {
   color: #e15c26;
@@ -193,7 +201,9 @@ path.leaflet-interactive {
 .barCharts {
   display: flex;
 }
-
+.leaflet-control-attribution{
+  visibility: hidden;
+}
 .MuiInputBase-input, .MuiInputLabel-root{
   color:#fff;
 }
@@ -208,4 +218,50 @@ path.leaflet-interactive {
 }
 .MuiPickersCalendarHeader-iconButton {
   background-color: #137664;
+}
+.noUi-base 
+.noUi-connect {
+	background: #e15c26;
+}
+
+.noUi-target.noUi-horizontal{
+	height:10px;
+}
+
+.noUi-horizontal .noUi-handle{
+  background: #fff;
+  width: 60px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: none;
+  color: #000000;
+  display: table;
+   margin-top: -4px
+}
+
+.noUi-horizontal .noUi-base .noUi-handle{
+  height: 25px;
+  width:60px;
+}
+.noUi-target{
+  height:10px;
+}
+.noUi-horizontal .noUi-base .noUi-handle::before {
+  font-size: 12px;
+  background: transparent;
+  content: attr(aria-valuetext);
+  display: table-cell;
+  position: static;
+  width: 100%;
+  vertical-align: middle;
+}
+.noUi-horizontal .noUi-base .noUi-handle::after{
+    display: none;
+
+}
+.MuiTypography-body1 {
+  font-size: 15px;
+}
+h5 {
+  font-size: 1rem;
 }

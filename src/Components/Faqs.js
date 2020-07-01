@@ -30,7 +30,10 @@ export default function ControlledExpansionPanels() {
 
   return (
     <div className={classes.root} id="faq">
-      <h1 id="FAQ">FAQ's - Frequently Asked Questions</h1>
+      <div id="faqTitle">
+      <h1>FAQ's - Frequently Asked Questions</h1>
+      </div>
+      <div className="faqContent">
       <ExpansionPanel
         expanded={expanded === "panel1"}
         onChange={handleChange("panel1")}
@@ -203,6 +206,8 @@ export default function ControlledExpansionPanels() {
           </Typography>
         </ExpansionPanelDetails>
       </ExpansionPanel>
+      </div>
+      
     </div>
   );
 }

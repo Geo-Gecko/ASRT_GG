@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import _ from "lodash";
-import {
-  Map,
-  TileLayer,
-  GeoJSON,
-} from "react-leaflet";
+import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
 import {
@@ -83,7 +79,7 @@ class UgMap extends Component {
       }
     });
     let districtGridcells = this.props.mapGrids;
-    let districtsdata = districtGridcells[0][0];    
+    let districtsdata = districtGridcells[0][0];
     Object.keys(districtsdata["features"]).forEach((element) => {
       if (
         typeof districtsdata["features"][element] !== "undefined" &&
@@ -95,7 +91,10 @@ class UgMap extends Component {
 
         gridcellArray.push(districtDetails);
       } else {
-        var districtProperties = districtsdata["features"][element]["properties"];
+        var districtProperties =
+          districtsdata["features"][element]["properties"];
+        console.log(districtProperties);
+
         propertiesArray.push(districtProperties);
       }
     });
@@ -128,12 +127,12 @@ class UgMap extends Component {
         nationalGridcell["properties"]
       )) {
         if (sliderK === "rainfall") {
-          this.nationalGridValue += val;          
+          this.nationalGridValue += val;
         } else if (sliderK === "ppp_sum") {
-          this.PopulationNationalGridValue += val;          
+          this.PopulationNationalGridValue += val;
         }
       }
-      return true
+      return true;
     });
     this.propertiesData.filter((rfs) => {
       for (let [sliderK, val] of Object.entries(rfs)) {
@@ -146,13 +145,13 @@ class UgMap extends Component {
         } else if (sliderK === "soil_alumi") {
           this.alumiValue += val;
         } else if (sliderK === "soil_phos") {
-          this.phosValue+= val;
+          this.phosValue += val;
         } else if (sliderK === "soil_potas") {
           this.potasValue += val;
         } else if (sliderK === "soil_boron") {
           this.boronValue += val;
         } else if (sliderK === "soil_iron") {
-          this.ironValue+= val;
+          this.ironValue += val;
         } else if (sliderK === "soil_magne") {
           this.magneValue += val;
         }
@@ -163,7 +162,7 @@ class UgMap extends Component {
     this.rainfallNationalValue =
       this.nationalGridValue / this.nationalGridcells.length;
     if (this.rainfallValue !== 0) {
-      this.rainfallchartData[0] =this.rainfallValue.toFixed(2);
+      this.rainfallchartData[0] = this.rainfallValue.toFixed(2);
       this.averagenationalGridcells[0] = this.rainfallNationalValue.toFixed(2);
     }
     this.props.dispatch({
@@ -171,7 +170,8 @@ class UgMap extends Component {
       payload: this.rainfallchartData,
       averagenationalGridcells: this.averagenationalGridcells,
     });
-    this.populationFinalValue = this.populationValue / this.propertiesData.length;
+    this.populationFinalValue =
+      this.populationValue / this.propertiesData.length;
     this.populationFinalNationalValue =
       this.PopulationNationalGridValue / this.nationalGridcells.length;
     if (this.populationValue !== 0) {
@@ -186,7 +186,9 @@ class UgMap extends Component {
       populationAverageNationalGridcells: this
         .populationAverageNationalGridcells,
     });
-    this.copperValue = (this.copperValue / this.propertiesData.length).toFixed(2);
+    this.copperValue = (this.copperValue / this.propertiesData.length).toFixed(
+      2
+    );
     this.alumiValue = (this.alumiValue / this.propertiesData.length).toFixed(2);
     this.phosValue = (this.phosValue / this.propertiesData.length).toFixed(2);
     this.potasValue = (this.potasValue / this.propertiesData.length).toFixed(2);
@@ -285,34 +287,34 @@ class UgMap extends Component {
     }
 
     if (collectionOfGridcells[0]) {
-      let map_state =
-          <Map
-            className="map"
-            center={[this.props.lat, this.props.lng]}
-            zoom={this.props.zoom}
-            ref="map"
-            style={{ height: "550px", color: "#e15c26" }}
-            maxBounds={this.state.bounds}
-            maxZoom={12}
-            minZoom={this.props.zoom}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-              url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-              maxzoom="9"
-            />
-            <GeoJSON
-              key={this.props.mapGrids[0][0].features.length}
-              data={data}
-              ref="geojson"
-              onEachFeature={this.onEachFeature}
-            />
-            <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
-            <Control className="info" position="topright">
-              <div>{(statusArea)}</div>
-            </Control>
-            }
-          </Map>
+      let map_state = (
+        <Map
+          className="map"
+          center={[this.props.lat, this.props.lng]}
+          zoom={this.props.zoom}
+          ref="map"
+          style={{ height: "550px", color: "#e15c26" }}
+          maxBounds={this.state.bounds}
+          maxZoom={12}
+          minZoom={this.props.zoom}
+        >
+          <TileLayer
+            attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+            maxzoom="9"
+          />
+          <GeoJSON
+            key={this.props.mapGrids[0][0].features.length}
+            data={data}
+            ref="geojson"
+            onEachFeature={this.onEachFeature}
+          />
+          <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
+          <Control className="info" position="topright">
+            <div>{statusArea}</div>
+          </Control>
+        </Map>
+      );
       return map_state;
     } else return "Failed to load the map";
   }

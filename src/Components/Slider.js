@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 import Nouislider from "nouislider-react";
 import _ from "lodash";
 import "nouislider/distribute/nouislider.css";
@@ -11,12 +12,11 @@ const styles = {
   fontFamily: "sans-serif",
   textAlign: "center",
   width: "250px",
-  marginLeft: "10px",
-  marginBottom: "40px",
+  marginLeft: "20px",
+  marginBottom: "20px",
 };
 class CustomizedSlider extends React.Component {
   UpdatedIndicators = this.props.updatePieChartIndicators;
-
   onSlide = (render, handle, value, un, percent) => {
     this.indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
@@ -38,10 +38,10 @@ class CustomizedSlider extends React.Component {
           for (let [key, property] of Object.entries(piece.properties)) {
             if (key === this.indicators[sliderKey]) {
               if (property < values[0] || property > values[1]) {
-                propertyValue= false;
+                propertyValue = false;
                 return propertyValue;
               }
-              propertyValue= true;
+              propertyValue = true;
               return propertyValue;
             }
           }
@@ -90,14 +90,15 @@ class CustomizedSlider extends React.Component {
 
     return (
       <div style={styles}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
+        <div style={{ textAlign: "center", marginBottom: 5, fontSize: 15 }}>
           {this.props.IndicatorSlider}
         </div>
         <Nouislider
           start={value}
           key={sliderKey}
+          connect
           range={range}
-          tooltips={true}
+          tooltips={false}
           onChange={this.onSlide}
         />
       </div>

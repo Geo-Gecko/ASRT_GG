@@ -66,6 +66,7 @@ function Checkboxes(props) {
           control={
             <Checkbox
               checked={state.key}
+              size="small"
               onChange={handleChange}
               value={state.key === true ? props.landCoverSliderValues : 0}
               id={checkboxKey}

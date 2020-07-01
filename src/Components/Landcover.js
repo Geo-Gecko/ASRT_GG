@@ -5,7 +5,7 @@ import Checkboxes from "./CheckBox";
 export default function LandCover(props) {
   return (
     <div>
-      <div style={{ textAlign: "center", marginTop: 20 }}>
+      <div style={{ textAlign: "center", marginTop: 10, fontSize:15 }}>
         {props.IndicatorSlider}
       </div>
       <Checkboxes label="No data" checkboxKey="0" />

@@ -25,7 +25,7 @@ export default function ContainedButtons(props) {
         onClick={props.click}
       >
         <h5>
-          <strong>{props.caption}</strong>
+      {props.caption}
         </h5>
       </Button>
     </div>

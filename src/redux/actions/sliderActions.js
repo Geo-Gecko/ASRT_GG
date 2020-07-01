@@ -2,12 +2,11 @@ import { sliderData } from "./actionTypes/actionTypes";
 import axios from "axios";
 let sliderUrl = `${process.env.REACT_APP_BACKEND_URL}/sliders/`;
 
-
 export const getSliderData = () => {
   function arrayColumn(agricIndicatorArraySet, counter) {
     if (agricIndicatorArraySet && typeof agricIndicatorArraySet !== undefined) {
       let agricIndicatorValues = agricIndicatorArraySet.map(
-        agricIndicatorValue => agricIndicatorValue[counter]
+        (agricIndicatorValue) => agricIndicatorValue[counter]
       );
 
       let max = Math.max(...agricIndicatorValues);
@@ -16,10 +15,10 @@ export const getSliderData = () => {
     }
   }
   let sliderKey = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-  return dispatch =>
+  return (dispatch) =>
     axios
       .get(sliderUrl)
-      .then(response => {
+      .then((response) => {
         var sliderResults = [];
         let landCoverResults = [];
 
@@ -35,7 +34,7 @@ export const getSliderData = () => {
               let result = arrayColumn(slidersample, sliderCounter);
               sliderResults.push(result);
             } else {
-              slidersample.filter(pice => {
+              slidersample.filter((pice) => {
                 return landCoverResults.push(pice[11]);
               });
             }
@@ -44,9 +43,8 @@ export const getSliderData = () => {
         dispatch({
           type: sliderData,
           payload: sliderResults,
-          landCoverResults: landCoverResults
+          landCoverResults: landCoverResults,
         });
       })
-      .catch(e => console.log(e));
-
+      .catch((e) => console.log(e));
 };
