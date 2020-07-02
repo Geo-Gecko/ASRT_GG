@@ -5,7 +5,6 @@ import {
   updatePieChartDataSuccess,
   updatePopulationChartData,
   updateChartView,
-  updateRainfallChartData,
   updateChartViewSuccess,
 } from "../actions/actionTypes/actionTypes";
 
@@ -29,14 +28,6 @@ const chartReducer = (state = AppState.initialChartState, action) => {
         populationAverageNationalGridcells:
           action.populationAverageNationalGridcells,
       };
-
-    case updateRainfallChartData:
-      return {
-        ...state,
-        rainfallChartData: action.payload,
-        averagenationalGridcells: action.averagenationalGridcells,
-      };
-
     case updatePieChartDataSuccess:
       return {
         ...state,

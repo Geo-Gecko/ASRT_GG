@@ -39,15 +39,15 @@ const ResponsiveDrawer = (props) => {
             </div>
           </div>
           <div className="col-lg-6 col-sm-12 ml-0">
-            <div id="RAINFALL">
-              <Rainfall />
+            <div>
+              <PieChartComponent />
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-lg-6 col-sm-12">
-            <div>
-              <PieChartComponent />
+            <div id="RAINFALL">
+              <Rainfall />
             </div>
           </div>
           <div className="col-lg-6 col-sm-12">
