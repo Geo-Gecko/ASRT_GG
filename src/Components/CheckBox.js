@@ -77,6 +77,7 @@ class Checkboxes extends Component {
           control={
             <Checkbox
               checked={this.state.key}
+              size="small"
               onChange={this.handleChange}
               value={this.state.key === true ? this.props.landCoverSliderValues : 0}
               id={this.props.checkboxKey}
