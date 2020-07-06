@@ -9,7 +9,6 @@ import Control from "react-leaflet-control";
 import { connect } from "react-redux";
 import {
   updatePieChartData,
-  updateRainfallChartData,
   updateChartView,
   updatePopulationChartData,
 } from "../redux/actions/actionTypes/actionTypes";
@@ -103,13 +102,9 @@ class UgMap extends Component {
       }
     });
 
-    this.rainfallchartData = _.cloneDeep(this.props.rainfallchartData);
     this.populationchartData = _.cloneDeep(this.props.populationchartData);
     this.piechartData = _.cloneDeep(this.props.piechartData);
 
-    this.averagenationalGridcells = _.cloneDeep(
-      this.props.averagenationalGridcells
-    );
     this.populationAverageNationalGridcells = _.cloneDeep(
       this.props.populationAverageNationalGridcells
     );
@@ -130,9 +125,7 @@ class UgMap extends Component {
       for (let [sliderK, val] of Object.entries(
         nationalGridcell["properties"]
       )) {
-        if (sliderK === "rainfall") {
-          this.nationalGridValue += val;
-        } else if (sliderK === "ppp_sum") {
+        if (sliderK === "ppp_sum") {
           this.PopulationNationalGridValue += val;
         }
       }
@@ -140,9 +133,7 @@ class UgMap extends Component {
     });
     this.propertiesData.filter((rfs) => {
       for (let [sliderK, val] of Object.entries(rfs)) {
-        if (sliderK === "rainfall") {
-          this.rainfallValue += val;
-        } else if (sliderK === "ppp_sum") {
+        if (sliderK === "ppp_sum") {
           this.populationValue += val;
         } else if (sliderK === "soil_copper") {
           this.copperValue += val;
@@ -161,18 +152,6 @@ class UgMap extends Component {
         }
       }
       return true;
-    });
-    this.rainfallValue = this.rainfallValue / this.propertiesData.length;
-    this.rainfallNationalValue =
-      this.nationalGridValue / this.nationalGridcells.length;
-    if (this.rainfallValue !== 0) {
-      this.rainfallchartData[0] =this.rainfallValue.toFixed(2);
-      this.averagenationalGridcells[0] = this.rainfallNationalValue.toFixed(2);
-    }
-    this.props.dispatch({
-      type: updateRainfallChartData,
-      payload: this.rainfallchartData,
-      averagenationalGridcells: this.averagenationalGridcells,
     });
     this.populationFinalValue = this.populationValue / this.propertiesData.length;
     this.populationFinalNationalValue =
@@ -313,9 +292,7 @@ const mapStateToProps = (state) => {
     locationValue: state.location.locationValue,
     sliderValue: state.slider.sliderValue,
     mapUpdated: state.map.mapUpdated,
-    rainfallchartData: state.chart.rainfallChartData,
     populationchartData: state.chart.populationChartData,
-    averagenationalGridcells: state.chart.averagenationalGridcells,
     populationAverageNationalGridcells:
       state.chart.populationAverageNationalGridcells,
     piechartData: state.chart.pieChartData,

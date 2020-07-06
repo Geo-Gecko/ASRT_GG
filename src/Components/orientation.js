@@ -16,6 +16,7 @@ import ExpansionMaps from "./MapOrientation";
 import UgMap from "./maps";
 import ControlledExpansionPanels from "./SideBar";
 import "../App.css";
+import MaterialUIPickers from "./DatePicker";
 
 const drawerWidth =350;
 const useStyles = makeStyles(theme => ({
@@ -118,6 +119,7 @@ function Orientation() {
                   <h6>AGRICULTURAL INDICATORS</h6>
                 </small>
               </div>
+              <MaterialUIPickers />
               <ControlledExpansionPanels />
               <Divider />
               <MatIcons />
@@ -137,6 +139,7 @@ function Orientation() {
                   <h6>AGRICULTURAL INDICATORS</h6>
                 </small>
               </div>
+              <MaterialUIPickers />
               <ExpansionSideBar />
               <Divider />
               <MatIcons />

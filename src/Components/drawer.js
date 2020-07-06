@@ -39,15 +39,25 @@ const ResponsiveDrawer = (props) => {
             </div>
           </div>
           <div className="col-lg-6 col-sm-12 ml-0">
-            <div id="RAINFALL">
-              <Rainfall />
+          <div>
+              <PieChartComponent />
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-lg-6 col-sm-12">
+            <div id="RAINFALL">
+              <Rainfall />
+            </div>
+          </div>
+          <div className="col-lg-6 col-sm-12">
+            <Ndvilinegraph />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-6 col-sm-12">
             <div>
-              <PieChartComponent />
+              <Temperature />
             </div>
           </div>
           <div className="col-lg-6 col-sm-12">
@@ -168,9 +178,7 @@ const ResponsiveDrawer = (props) => {
                 <CloseIcon />
               </IconButton>
               <div id="indicatorText">
-                <h6>
-                  <strong>{title}</strong>
-                </h6>
+              <h5>{title}</h5>
               </div>
               <MaterialUIPickers />
               {data}
@@ -188,9 +196,7 @@ const ResponsiveDrawer = (props) => {
             >
               <div className={classes.toolbar} />
               <div id="indicatorText">
-                <h6>
-                  <strong>{title}</strong>
-                </h6>
+              <h5>{title}</h5>
               </div>
               <MaterialUIPickers />
               {data}
