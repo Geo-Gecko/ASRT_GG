@@ -1,71 +1,49 @@
-import React from 'react';
-import {Line} from 'react-chartjs-2';
-
-const state = {
-  labels: ['Q1', 'Q2', 'Q3',
-           'Q4'],
-  datasets: [
-    {
-
-      label: 'National soil moisture',
-      fill: false,
-      backgroundColor: 'rgba(255,250,250,1)',
-      borderColor: '#77BB85',
-      borderWidth: 6,
-      data: [65, 59, 80, 81]
-    },
-    {
-      label: 'District soil moisture',
-      fill: false,
-      backgroundColor: 'rgba(255,250,250,1)',
-      borderColor: '#616161',
-      borderWidth: 6,
-      data: [87, 50, 70, 41]
-    }
-  ]
-}
-
-export default class Ndwilinegraph extends React.Component {
-  render() {
-    return (
-      <div className="mega">
-        <div className="charts">
-
-        <h5 className="chartHeading">Soil Moisture</h5>
-
-        <hr className="HR"/>
-        <Line
-          data={state}
-          options={{
-            title:{
-              display:true,
-              fontSize:40
-            },
-            legend:{
-              display:true,
-              position:'bottom'
-            },
-            scales: {
-              yAxes: [{
-                  gridLines: {
-
-                      color: '#929292',
-                      height:100
-
-                  }
-              }],
-              xAxes: [{
-                  gridLines: {
-                      color: 'white'
-                  }  
-              }]
+      import React from 'react';
+      import {Line} from 'react-chartjs-2';
+      const options = {
+        legend: {
+          display: true,
+          position: "bottom",
+        },
+        }
+      const state = {
+        labels: ['Q1', 'Q2', 'Q3',
+                 'Q4'],
+        datasets: [
+          {
+            label: 'National Crop Health',
+            fill: false,
+            backgroundColor: 'rgba(75,192,192,1)',
+            borderColor: 'rgba(75,192,192,1)',
+            borderWidth: 2,
+            data: [0.65, 0.59, 0.80, 0.81]
+          },
+          {
+            label: ' District Crop Health',
+            fill: false,
+            backgroundColor: 'rgba(255,99,132,1)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 2,
+            data: [0.87, 0.50, 0.70, 0.41]
           }
-          }}
-          height={100}
-        />
-      </div>
-
-      </div>
-    );
-  }
-}
+        ]
+      }
+      export default class Ndwilinegraph extends React.Component {
+        render() {
+          return (
+            <div className="mega">
+            <div className="charts">
+             <h5 className="chartHeading">Crop Health</h5>
+              </div>
+              <div className="chartSection">
+              <Line
+                data={state}
+                options={options}
+                height={120}
+              />
+              </div>
+            </div>
+          );
+        }
+      }
+      
