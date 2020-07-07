@@ -86,15 +86,17 @@ class UgMap extends Component {
           dist_ref.findIndex(checkDistrict) + 1
       ) {
         var districtDetails = districtsdata["features"][element];
+
         gridcellArray.push(districtDetails);
       } else {
-        var districtProperties =
-          districtsdata["features"][element]["properties"];
+        var districtProperties = districtsdata["features"][element]["properties"];
         propertiesArray.push(districtProperties);
       }
     });
+
     this.populationchartData = _.cloneDeep(this.props.populationchartData);
     this.piechartData = _.cloneDeep(this.props.piechartData);
+
     this.populationAverageNationalGridcells = _.cloneDeep(
       this.props.populationAverageNationalGridcells
     );
@@ -121,7 +123,6 @@ class UgMap extends Component {
       }
       return true;
     });
-
     this.propertiesData.filter((rfs) => {
       for (let [sliderK, val] of Object.entries(rfs)) {
         if (sliderK === "ppp_sum") {
@@ -131,21 +132,20 @@ class UgMap extends Component {
         } else if (sliderK === "soil_alumi") {
           this.alumiValue += val;
         } else if (sliderK === "soil_phos") {
-          this.phosValue += val;
+          this.phosValue+= val;
         } else if (sliderK === "soil_potas") {
           this.potasValue += val;
         } else if (sliderK === "soil_boron") {
           this.boronValue += val;
         } else if (sliderK === "soil_iron") {
-          this.ironValue += val;
+          this.ironValue+= val;
         } else if (sliderK === "soil_magne") {
           this.magneValue += val;
         }
       }
       return true;
     });
-    this.populationFinalValue =
-      this.populationValue / this.propertiesData.length;
+    this.populationFinalValue = this.populationValue / this.propertiesData.length;
     this.populationFinalNationalValue =
       this.PopulationNationalGridValue / this.nationalGridcells.length;
     if (this.populationValue !== 0) {
@@ -160,9 +160,7 @@ class UgMap extends Component {
       populationAverageNationalGridcells: this
         .populationAverageNationalGridcells,
     });
-    this.copperValue = (this.copperValue / this.propertiesData.length).toFixed(
-      2
-    );
+    this.copperValue = (this.copperValue / this.propertiesData.length).toFixed(2);
     this.alumiValue = (this.alumiValue / this.propertiesData.length).toFixed(2);
     this.phosValue = (this.phosValue / this.propertiesData.length).toFixed(2);
     this.potasValue = (this.potasValue / this.propertiesData.length).toFixed(2);
@@ -171,38 +169,20 @@ class UgMap extends Component {
     this.magneValue = (this.magneValue / this.propertiesData.length).toFixed(2);
 
     this.UpdatedIndicators = this.props.updatePieChartIndicators;
-
-    for (let a = 0; a <= this.UpdatedIndicators.length; a++) {
-      if (this.UpdatedIndicators[a] === "soil_copper") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.copperValue;
-      } else if (this.UpdatedIndicators[a] === "soil_alumi") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.alumiValue;
-      } else if (this.UpdatedIndicators[a] === "soil_phos") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.phosValue;
-      } else if (this.UpdatedIndicators[a] === "soil_potas") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.potasValue;
-      } else if (this.UpdatedIndicators[a] === "soil_boron") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.boronValue;
-      } else if (this.UpdatedIndicators[a] === "soil_iron") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.ironValue;
-      } else if (this.UpdatedIndicators[a] === "soil_magne") {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(this.UpdatedIndicators[a])
-        ] = this.magneValue;
-      }
+    let pieChartValuesObject = {
+      "soil_copper": this.copperValue, "soil_alumi": this.alumiValue,
+      "soil_phos": this.phosValue, "soil_potas": this.potasValue,
+      "soil_boron": this.boronValue, "soil_iron": this.ironValue,
+      "soil_magne": this.magneValue
     }
+
+    Object.keys(pieChartValuesObject).forEach(key_ => {
+      if (this.UpdatedIndicators.includes(key_)) {
+        this.piechartData[
+          this.UpdatedIndicators.indexOf(key_)
+        ] = pieChartValuesObject[key_];
+      }
+    })
 
     this.props.dispatch({
       type: updatePieChartData,
@@ -261,34 +241,34 @@ class UgMap extends Component {
     }
 
     if (collectionOfGridcells[0]) {
-      let map_state = (
-        <Map
-          className="map"
-          center={[this.props.lat, this.props.lng]}
-          zoom={this.props.zoom}
-          ref="map"
-          style={{ height: "550px", color: "#e15c26" }}
-          maxBounds={this.state.bounds}
-          maxZoom={12}
-          minZoom={this.props.zoom}
-        >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
-            url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
-            maxzoom="9"
-          />
-          <GeoJSON
-            key={this.props.mapGrids[0][0].features.length}
-            data={data}
-            ref="geojson"
-            onEachFeature={this.onEachFeature}
-          />
-          <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
-          <Control className="info" position="topright">
-            <div>{statusArea}</div>
-          </Control>
-        </Map>
-      );
+      let map_state =
+          <Map
+            className="map"
+            center={[this.props.lat, this.props.lng]}
+            zoom={this.props.zoom}
+            ref="map"
+            style={{ height: "550px", color: "#e15c26" }}
+            maxBounds={this.state.bounds}
+            maxZoom={12}
+            minZoom={this.props.zoom}
+          >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright"></a> contributors &copy; <a href="https://carto.com/attributions"></a>'
+              url="https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png"
+              maxzoom="9"
+            />
+            <GeoJSON
+              key={this.props.mapGrids[0][0].features.length}
+              data={data}
+              ref="geojson"
+              onEachFeature={this.onEachFeature}
+            />
+            <GeoJSON data={districtData} onEachFeature={this.onEachFeature} />
+            <Control className="info" position="topright">
+              <div>{(statusArea)}</div>
+            </Control>
+
+          </Map>
       return map_state;
     } else return "Failed to load the map";
   }

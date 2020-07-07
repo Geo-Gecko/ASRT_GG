@@ -34,17 +34,16 @@
 
 .mega {
   margin-top: 20px;
-  border:1px solid #137664;
+  border: 1px solid #137664;
   border-radius: 10px;
   margin-left: 5px;
   margin-right: 5px;
   background-color: #f1f8fe;
-  height:300px;
+  height: 300px;
 }
 .chartHeading {
   text-align: center;
   color: #fff;
-
 }
 
 .charts {
@@ -53,8 +52,8 @@
   border-bottom: 1px solid #137664;
   border-radius: 8px;
 }
-.chartSection{
-  margin-top:50px;
+.chartSection {
+  margin-top: 50px;
 }
 .makeStyles-drawerPaper-6 {
   width: 300px;
@@ -81,11 +80,11 @@
   text-align: center;
   height: 100vh;
 }
-.faqContent{
+.faqContent {
   width: 60%;
-margin:5% 20%;
+  margin: 5% 20%;
 }
-#faqTitle{
+#faqTitle {
   padding-top: 10px;
 }
 #pic {
@@ -179,7 +178,7 @@ path.leaflet-interactive {
 #contact-form {
   width: 400px;
   padding: 10px;
-  color:#fff;
+  color: #fff;
 }
 .btn-primary {
   color: #fff;
@@ -201,34 +200,53 @@ path.leaflet-interactive {
 .barCharts {
   display: flex;
 }
-.leaflet-control-attribution{
-  visibility: hidden;
+
+.MuiInputBase-input,
+.MuiInputLabel-root {
+  color: #fff;
 }
-.MuiInputBase-input, .MuiInputLabel-root{
-  color:#fff;
+.MuiFormControl-marginNormal {
+  width: 90%;
 }
-.MuiFormControl-marginNormal{
-  width:90%;
-}
-.MuiInput-underline:before, .MuiInput-underline:after {
+.MuiInput-underline:before,
+.MuiInput-underline:after {
   border-bottom: 1px solid #fff;
 }
-.MuiInput-underline:hover{
-    border-bottom: 1px solid #fff;
+.MuiInput-underline:hover {
+  border-bottom: 1px solid #fff;
 }
 .MuiPickersCalendarHeader-iconButton {
   background-color: #137664;
 }
-.noUi-base 
-.noUi-connect {
-	background: #e15c26;
+.leaflet-control-attribution {
+  visibility: hidden;
+}
+.MuiInputBase-input,
+.MuiInputLabel-root {
+  color: #fff;
+}
+.MuiFormControl-marginNormal {
+  width: 90%;
+}
+.MuiInput-underline:before,
+.MuiInput-underline:after {
+  border-bottom: 1px solid #fff;
+}
+.MuiInput-underline:hover {
+  border-bottom: 1px solid #fff;
+}
+.MuiPickersCalendarHeader-iconButton {
+  background-color: #137664;
+}
+.noUi-base .noUi-connect {
+  background: #e15c26;
 }
 
-.noUi-target.noUi-horizontal{
-	height:10px;
+.noUi-target.noUi-horizontal {
+  height: 10px;
 }
 
-.noUi-horizontal .noUi-handle{
+.noUi-horizontal .noUi-handle {
   background: #fff;
   width: 60px;
   border: none;
@@ -236,15 +254,15 @@ path.leaflet-interactive {
   box-shadow: none;
   color: #000000;
   display: table;
-   margin-top: -4px
+  margin-top: -4px;
 }
 
-.noUi-horizontal .noUi-base .noUi-handle{
+.noUi-horizontal .noUi-base .noUi-handle {
   height: 25px;
-  width:60px;
+  width: 60px;
 }
-.noUi-target{
-  height:10px;
+.noUi-target {
+  height: 10px;
 }
 .noUi-horizontal .noUi-base .noUi-handle::before {
   font-size: 12px;
@@ -255,9 +273,8 @@ path.leaflet-interactive {
   width: 100%;
   vertical-align: middle;
 }
-.noUi-horizontal .noUi-base .noUi-handle::after{
-    display: none;
-
+.noUi-horizontal .noUi-base .noUi-handle::after {
+  display: none;
 }
 .MuiTypography-body1 {
   font-size: 15px;

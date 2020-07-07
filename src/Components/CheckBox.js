@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import Checkbox from "@material-ui/core/Checkbox";
 import "../App.css";
 import FormGroup from "@material-ui/core/FormGroup";
@@ -7,44 +7,52 @@ import _ from "lodash";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { updateLandCoverGridData } from "../redux/actions/actionTypes/actionTypes";
 
-function Checkboxes(props) {
-  let { checkboxKey } = props;
-  let checkboxValue = 0;
-  let indicators = props.landCoverIndicators;
-  let result = props.landCoverValue;
-  result = result.map((sliderInfo) => sliderInfo);
-  let newResult = result[checkboxKey];
-  checkboxValue = newResult;
+class Checkboxes extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      key: false,
+      tagCheckBox: parseFloat(Math.random().toFixed(3)),
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
 
-  let mapData = _.cloneDeep(props.mapGrids);
-  let selectedMapData = mapData;
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.tagCheckBox === nextState.tagCheckBox ? false : true;
+  }
 
-  const [state, setState] = React.useState({ key: false });
-  const handleChange = () => {
-    setState({
-      ...state,
-      key: !state.key,
+  handleChange() {
+    this.setState({
+      key: !this.state.key,
+      tagCheckBox: parseFloat(Math.random().toFixed(3)),
     });
-   
-    props.landCoverSliderValues[checkboxKey] = checkboxValue;
-    
-    for (let [landCoverKey, value] of Object.entries(
-      props.landCoverSliderValues
-    )) {
 
+    let checkboxValue = 0;
+
+    let result = this.props.landCoverValue;
+    result = result.map((sliderInfo) => sliderInfo);
+    let newResult = result[this.props.checkboxKey];
+    checkboxValue = newResult;
+    let selectedMapData = _.cloneDeep(this.props.mapGrids);
+
+    this.props.landCoverSliderValues[this.props.checkboxKey] = checkboxValue;
+
+    for (let [landCoverKey, value] of Object.entries(
+      this.props.landCoverSliderValues
+    )) {
       selectedMapData[0][0].features = selectedMapData[0][0].features.filter(
         (piece) => {
           let checkPropertyValue;
           for (let [key, property] of Object.entries(piece.properties)) {
             if (
               key === "land_cover" &&
-              indicators[landCoverKey] === props.label
+              this.props.landCoverIndicators[landCoverKey] === this.props.label
             ) {
               if (property < value) {
-                checkPropertyValue=false;
+                checkPropertyValue = false;
                 return checkPropertyValue;
               } else {
-                checkPropertyValue= true;
+                checkPropertyValue = true;
                 return checkPropertyValue;
               }
             }
@@ -54,30 +62,37 @@ function Checkboxes(props) {
       );
     }
 
-    props.dispatch({ type: updateLandCoverGridData, payload: selectedMapData });
+    this.props.dispatch({
+      type: updateLandCoverGridData,
+      payload: selectedMapData,
+    });
     // this is in onChange so may bring up an error
-    return true
-  };
+    return true;
+  }
 
-  return (
-    <div>
-      <FormGroup>
-        <FormControlLabel
-          control={
-            <Checkbox
-              checked={state.key}
-              size="small"
-              onChange={handleChange}
-              value={state.key === true ? props.landCoverSliderValues : 0}
-              id={checkboxKey}
-              inputProps={{ "aria-label": "checkbox with default color" }}
-            />
-          }
-          label={props.label}
-        />
-      </FormGroup>
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <FormGroup>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={this.state.key}
+                size="small"
+                onChange={this.handleChange}
+                value={
+                  this.state.key === true ? this.props.landCoverSliderValues : 0
+                }
+                id={this.props.checkboxKey}
+                inputProps={{ "aria-label": "checkbox with default color" }}
+              />
+            }
+            label={this.props.label}
+          />
+        </FormGroup>
+      </div>
+    );
+  }
 }
 const mapStateToProps = (state) => {
   return {

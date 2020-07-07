@@ -61,7 +61,7 @@ export default function MenuAppBarOrientation() {
         />
         <div className={classes.spacing} />
         <Link to="/orientation" className="btn-link">
-          <ContainedButtons caption="Orientation" click={refreshPage} />
+        <ContainedButtons caption="Orientation" click={refreshPage} />
         </Link>
       </Toolbar>
     </div>

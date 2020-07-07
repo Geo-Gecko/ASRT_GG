@@ -17,6 +17,27 @@ const styles = {
 };
 class CustomizedSlider extends React.Component {
   UpdatedIndicators = this.props.updatePieChartIndicators;
+
+  shouldComponentUpdate(nextProps, nextState) {
+    let update_ = true;
+    if (this.props.sliderValue.length > 0 && nextProps.sliderValue.length > 0) {
+      let currentSliderSum = this.props.sliderValue[
+        this.props.sliderKey
+      ].reduce((a, b) => {
+        return a + b;
+      }, 0);
+      let nextSliderSum = nextProps.sliderValue[nextProps.sliderKey].reduce(
+        (a, b) => {
+          return a + b;
+        },
+        0
+      );
+      currentSliderSum === nextSliderSum ? (update_ = false) : (update_ = true);
+      return update_;
+    }
+    return update_;
+  }
+
   onSlide = (render, handle, value, un, percent) => {
     this.indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
@@ -58,7 +79,7 @@ class CustomizedSlider extends React.Component {
       type: updatePieChartIndicators,
       payload: this.UpdatedIndicators,
     });
-  };
+  };x
 
   render() {
     this.selectedmapData =

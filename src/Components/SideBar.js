@@ -143,8 +143,8 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-          <CustomizedSlider IndicatorSlider="Slope" sliderKey={11} />
-          <CustomizedSlider IndicatorSlider="Elevation" sliderKey={12} />
+            <CustomizedSlider IndicatorSlider="Slope" sliderKey={11} />
+            <CustomizedSlider IndicatorSlider="Elevation" sliderKey={12} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>

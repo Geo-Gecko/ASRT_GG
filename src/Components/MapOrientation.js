@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: 200,
     marginLeft: 220,
     marginTop:250,
-  }
+  },
 }));
 export default function ExpansionMaps() {
   const classes = useStyles();

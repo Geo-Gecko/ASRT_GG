@@ -207,7 +207,6 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelDetails>
       </ExpansionPanel>
       </div>
-      
     </div>
   );
 }

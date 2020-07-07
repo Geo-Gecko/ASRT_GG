@@ -18,7 +18,6 @@ import ControlledExpansionPanels from "./SideBar";
 import "../App.css";
 import MaterialUIPickers from "./DatePicker";
 
-
 const drawerWidth =350;
 const useStyles = makeStyles(theme => ({
   root: {
