@@ -19,6 +19,10 @@ import PieChartComponent from "./pieChart";
 import Rainfall from "./rainfallBarChart";
 import Population from "./populationBarchart";
 import { connect } from "react-redux";
+import MaterialUIPickers from "./DatePicker";
+import Ndvilinegraph from './ndvi-linegraph';
+import Ndwilinegraph from './ndwi-linegraph';
+import Temperature from './lst-Linegraph';
 const ResponsiveDrawer = (props) => {
   let drawerWidth = 350;
   let layout = "";
@@ -35,18 +39,40 @@ const ResponsiveDrawer = (props) => {
             </div>
           </div>
           <div className="col-lg-6 col-sm-12 ml-0">
-            <div id="RAINFALL">
-              <Rainfall />
+          <div>
+              <PieChartComponent />
             </div>
           </div>
         </div>
         <div className="row">
           <div className="col-lg-6 col-sm-12">
-            <div>
-              <PieChartComponent />
+            <div id="RAINFALL">
+              <Rainfall />
             </div>
           </div>
-          <div className="col-lg-6 col-sm-12"></div>
+          <div className="col-lg-6 col-sm-12">
+            <Ndvilinegraph />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-6 col-sm-12">
+            <div>
+              <Temperature />
+            </div>
+          </div>
+          <div className="col-lg-6 col-sm-12">
+          <Ndvilinegraph />
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-6 col-sm-12">
+            <div>
+              <Temperature />
+            </div>
+          </div>
+          <div className="col-lg-6 col-sm-12">
+          <Ndwilinegraph />
+          </div>
         </div>
       </div>
     );
@@ -152,10 +178,9 @@ const ResponsiveDrawer = (props) => {
                 <CloseIcon />
               </IconButton>
               <div id="indicatorText">
-                <h6>
-                  <strong>{title}</strong>
-                </h6>
+              <h5>{title}</h5>
               </div>
+              <MaterialUIPickers />
               {data}
               <Divider />
               <MatIcons />
@@ -171,10 +196,9 @@ const ResponsiveDrawer = (props) => {
             >
               <div className={classes.toolbar} />
               <div id="indicatorText">
-                <h6>
-                  <strong>{title}</strong>
-                </h6>
+              <h5>{title}</h5>
               </div>
+              <MaterialUIPickers />
               {data}
               <Divider />
               <MatIcons />

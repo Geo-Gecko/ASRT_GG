@@ -1,6 +1,11 @@
 import React from 'react';
 import {Line} from 'react-chartjs-2';
-
+const options = {
+  legend: {
+    display: true,
+    position: "bottom",
+  },
+  }
 const state = {
   labels: ['Q1', 'Q2', 'Q3',
            'Q4'],
@@ -9,18 +14,17 @@ const state = {
       label: 'National vegetation health',
       fill: false,
       backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: '#77BB85',
-
-      borderWidth: 6,
-      data: [65, 59, 80, 81]
+      borderColor: 'rgba(75,192,192,1)',
+      borderWidth: 2,
+      data: [0.65, 0.59, 0.80, 0.81]
     },
     {
       label: ' District vegetation health',
       fill: false,
-      backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: '#77BB85',
-      borderWidth: 6,
-      data: [68, 68, 90, 76]
+      backgroundColor: 'rgba(255,99,132,1)',
+      borderColor: 'rgba(255,99,132,1)',
+      borderWidth: 2,
+      data: [0.68, 0.68, 0.90, 0.76]
     }
   ]
 }
@@ -29,42 +33,16 @@ export default class Ndvilinegraph extends React.Component {
   render() {
     return (
       <div className="mega">
-
-<div className="charts">
-
-        <h5 className="chartHeading">Vegetation Health</h5>
-
-        <hr className="HR"/>
+      <div className="charts">
+       <h5 className="chartHeading">Vegetation Health</h5>
+        </div>
+        <div className="chartSection">
         <Line
           data={state}
-          options={{
-            title:{
-              display:true,
-              
-              fontSize:40
-            },
-            legend:{
-              display:true,
-              position:'bottom'
-            },
-            scales: {
-              yAxes: [{
-                  gridLines: {
-
-                      color: '#929292'
-
-                  }
-              }],
-              xAxes: [{
-                  gridLines: {
-                      color: 'white'
-                  }  
-              }]
-          }
-          }}
-          height={100}
+          options={options}
+          height={120}
         />
-      </div>
+        </div>
       </div>
     );
   }

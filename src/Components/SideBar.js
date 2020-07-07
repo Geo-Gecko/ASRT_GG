@@ -17,12 +17,8 @@ const useStyles = makeStyles((theme) => ({
     flexBasis: "70%",
     flexShrink: 0,
   },
-  secondaryHeading: {
-    fontSize: theme.typography.pxToRem(15),
-    color: theme.palette.text.secondary,
-  },
   spacing: {
-    margin: 7,
+    marginLeft: 8,
   },
 }));
 
@@ -150,9 +146,9 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Slope" sliderKey={12} />
+            <CustomizedSlider IndicatorSlider="Slope" sliderKey={11} />
 
-            <CustomizedSlider IndicatorSlider="Elevation" sliderKey={13} />
+            <CustomizedSlider IndicatorSlider="Elevation" sliderKey={12} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -171,7 +167,7 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="" sliderKey={14} />
+            <CustomizedSlider IndicatorSlider="" sliderKey={13} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
