@@ -20,13 +20,16 @@ class CustomizedSlider extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     let update_ = true;
-    if (this.props.sliderValue.length > 0 && nextProps.sliderValue.length > 0) {
+    if (
+      this.props.sliderValue.length === nextProps.sliderValue.length &&
+      nextProps.sliderValue.length > 0
+    ) {
       let currentSliderSum = this.props.sliderValue[
         this.props.sliderKey
-      ].reduce((a, b) => { return a + b }, 0 )
+      ].reduce((a, b) => { return a + b }, 0)
       let nextSliderSum = nextProps.sliderValue[
         nextProps.sliderKey
-      ].reduce((a, b) => { return a + b }, 0 )
+      ].reduce((a, b) => { return a + b }, 0)
       currentSliderSum === nextSliderSum ? update_ = false : update_ = true
       return update_
     }
@@ -54,10 +57,10 @@ class CustomizedSlider extends React.Component {
           for (let [key, property] of Object.entries(piece.properties)) {
             if (key === this.indicators[sliderKey]) {
               if (property < values[0] || property > values[1]) {
-                propertyValue= false;
+                propertyValue = false;
                 return propertyValue;
               }
-              propertyValue= true;
+              propertyValue = true;
               return propertyValue;
             }
           }
