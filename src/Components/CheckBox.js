@@ -34,7 +34,7 @@ class Checkboxes extends Component {
     result = result.map((sliderInfo) => sliderInfo);
     let newResult = result[this.props.checkboxKey];
     checkboxValue = newResult;
-    let selectedMapData = _.cloneDeep(this.props.mapGrids);;
+    let selectedMapData = _.cloneDeep(this.props.mapGrids);
    
     this.props.landCoverSliderValues[this.props.checkboxKey] = checkboxValue;
     
