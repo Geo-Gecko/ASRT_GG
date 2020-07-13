@@ -15,6 +15,7 @@ const styles = {
   marginLeft: "20px",
   marginBottom: "20px",
 };
+
 class CustomizedSlider extends React.Component {
   UpdatedIndicators = this.props.updatePieChartIndicators;
 
@@ -42,6 +43,11 @@ class CustomizedSlider extends React.Component {
     this.indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
 
+    let selectedMapData =
+      this.props.landCovermapUpdated === true
+        ? _.cloneDeep(this.props.updatedMapGrids)
+        : _.cloneDeep(this.props.mapGrids);
+
     this.indicator = this.indicators[this.props.sliderKey];
 
     if (this.UpdatedIndicators.includes(this.indicator) === false) {
@@ -52,8 +58,7 @@ class CustomizedSlider extends React.Component {
 
     for (let [sliderKey, values] of Object.entries(this.props.sliderValues)) {
       this.props.currentsliderValues.push(values);
-
-      this.selectedmapData[0][0].features = this.selectedmapData[0][0].features.filter(
+      selectedMapData[0][0].features = selectedMapData[0][0].features.filter(
         (piece) => {
           let propertyValue;
           for (let [key, property] of Object.entries(piece.properties)) {
@@ -73,20 +78,16 @@ class CustomizedSlider extends React.Component {
 
     this.props.dispatch({
       type: updateGridData,
-      payload: this.selectedmapData,
+      payload: selectedMapData,
     });
     this.props.dispatch({
       type: updatePieChartIndicators,
       payload: this.UpdatedIndicators,
     });
-  };x
+  };
+  x;
 
   render() {
-    this.selectedmapData =
-      this.props.landCovermapUpdated === true
-        ? _.cloneDeep(this.props.updatedMapGrids)
-        : _.cloneDeep(this.props.mapGrids);
-
     let value = [1, 100];
     let result = this.props.sliderValue;
     var { sliderKey } = this.props;
