@@ -61,16 +61,6 @@ const ResponsiveDrawer = (props) => {
             </div>
           </div>
           <div className="col-lg-6 col-sm-12">
-          <Ndvilinegraph />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-lg-6 col-sm-12">
-            <div>
-              <Temperature />
-            </div>
-          </div>
-          <div className="col-lg-6 col-sm-12">
           <Ndwilinegraph />
           </div>
         </div>

@@ -15,7 +15,10 @@ export const getSliderData = () => {
       return [min, max];
     }
   }
-  let sliderKey = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+  let sliderKey = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+    16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27
+  ];
   return dispatch =>
     axios
       .get(sliderUrl)
@@ -31,12 +34,12 @@ export const getSliderData = () => {
           sliderCounter++
         ) {
           if (sliderCounter < sliderKey.length) {
-            if (sliderCounter !== 11) {
+            if (sliderCounter !== 21) {
               let result = arrayColumn(slidersample, sliderCounter);
               sliderResults.push(result);
             } else {
               slidersample.filter(pice => {
-                return landCoverResults.push(pice[11]);
+                return landCoverResults.push(pice[21]);
               });
             }
           }
