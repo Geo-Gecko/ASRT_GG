@@ -6,6 +6,10 @@ import {
   updatePopulationChartData,
   updateChartView,
   updateChartViewSuccess,
+  updateRainfallChartData,
+  updateCropHealthChartData,
+  updateVegetationHealthChartData,
+  updateTemperatureChartData
 } from "../actions/actionTypes/actionTypes";
 
 const chartReducer = (state = AppState.initialChartState, action) => {
@@ -27,6 +31,31 @@ const chartReducer = (state = AppState.initialChartState, action) => {
         populationChartData: action.payload,
         populationAverageNationalGridcells:
           action.populationAverageNationalGridcells,
+      };
+    case updateVegetationHealthChartData:
+      return {
+        ...state,
+        vegetationHealthChartData: action.payload,
+        vegetationHealthNationalGridcells:
+          action.vegetationHealthNationalGridcells,
+      };
+    case updateCropHealthChartData:
+      return {
+        ...state,
+        cropHealthChartData: action.payload,
+        cropHealthNationalGridcells: action.cropHealthNationalGridcells,
+      };
+    case updateRainfallChartData:
+      return {
+        ...state,
+        rainfallChartData: action.payload,
+        rainfallNationalGridcells: action.rainfallNationalGridcells,
+      };
+    case updateTemperatureChartData:
+      return {
+        ...state,
+        temperatureChartData: action.payload,
+        temperatureNationalGridcells: action.temperatureNationalGridcells,
       };
     case updatePieChartDataSuccess:
       return {

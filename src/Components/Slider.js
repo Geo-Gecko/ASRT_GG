@@ -42,7 +42,6 @@ class CustomizedSlider extends React.Component {
   onSlide = (render, handle, value, un, percent) => {
     this.indicators = this.props.indicators;
     this.props.sliderValues[this.props.sliderKey] = value;
-
     let selectedMapData =
       this.props.landCovermapUpdated === true
         ? _.cloneDeep(this.props.updatedMapGrids)
@@ -96,6 +95,7 @@ class CustomizedSlider extends React.Component {
     if (Array.isArray(newResult) && newResult.length) {
       value = newResult;
     }
+
     if (this.props.chartView === true && this.props.mapUpdated === true) {
       result = this.props.sliderValues;
       for (let [Key, values] of Object.entries(this.props.sliderValues)) {
@@ -109,7 +109,6 @@ class CustomizedSlider extends React.Component {
     if (newResult) {
       range = { min: newResult[0], max: newResult[1] };
     }
-
     return (
       <div style={styles}>
         <div style={{ textAlign: "center", marginBottom: 5, fontSize: 15 }}>

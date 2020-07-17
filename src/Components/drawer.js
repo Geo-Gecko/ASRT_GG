@@ -16,7 +16,7 @@ import MenuAppBar from "./navbar";
 import "../App.css";
 import UgMap from "./maps";
 import PieChartComponent from "./pieChart";
-import Rainfall from "./rainfallBarChart";
+import Rainfall from "./rainfall-linegraph";
 import Population from "./populationBarchart";
 import { connect } from "react-redux";
 import Ndvilinegraph from "./ndvi-linegraph";

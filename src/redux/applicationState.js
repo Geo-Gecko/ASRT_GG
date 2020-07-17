@@ -15,6 +15,7 @@ const AppState = {
     initialIndicatorSize: "",
     updateInitialIndicatorSize: false,
     indicatorTitle: "",
+    
 
     dist_ref: [
       "KARENGA",
@@ -158,9 +159,17 @@ const AppState = {
     updatedPieChart: [],
     pieChartDataUpdated: false,
     populationChartData: [],
+    rainfallChartData: [],
+    cropHealthChartData: [],
+    temperatureChartData: [],
+    temperatureNationalGridcells: [],
+    cropHealthNationalGridcells: [],
+    vegetationHealthChartData: [],
     chartView: false,
     averagenationalGridcells: [],
     populationAverageNationalGridcells: [],
+    rainfallNationalGridcells: [],
+    vegetationHealthNationalGridcells: [],
   },
   initialLocationState: {
     locationValue: [],

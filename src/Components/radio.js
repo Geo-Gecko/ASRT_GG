@@ -14,7 +14,7 @@ class RadioButtons extends React.Component {
     this.setState({ value: event.target.value });
   };
   render() {
-    this.radioComponent = (
+    this.radiocomponent = (
       <div>
         <CustomizedSlider IndicatorSlider="Soil Moisture" sliderKey={8} />
         <CustomizedSlider IndicatorSlider="Rainfall" sliderKey={12} />
@@ -59,7 +59,7 @@ class RadioButtons extends React.Component {
         </div>
       );
     } else {
-      this.radioComponent = this.radioComponent;
+      this.radioComponent = this.radiocomponent;
     }
     return (
       <FormControl component="fieldset">
