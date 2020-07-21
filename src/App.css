@@ -286,11 +286,19 @@ h5 {
   margin-left: -15px;
 }
 .MuiFormLabel-root {
-  color:#fff;
+  color: #fff;
 }
 .MuiFormLabel-root.Mui-focused {
-  color:#fff;
+  color: #fff;
 }
 .MuiFormGroup-row {
   padding-bottom: 30px;
+}
+.loadingScreen {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }

@@ -3,6 +3,7 @@ import _ from "lodash";
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
 import Control from "react-leaflet-control";
 import { connect } from "react-redux";
+import LoadingScreen from "./loadingScreen";
 import {
   updatePieChartData,
   updateChartView,
@@ -721,7 +722,7 @@ class UgMap extends Component {
         </Map>
       );
       return map_state;
-    } else return "Failed to load the map";
+    } else return <LoadingScreen />;
   }
 }
 const mapStateToProps = (state) => {
