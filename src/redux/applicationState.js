@@ -15,7 +15,8 @@ const AppState = {
     initialIndicatorSize: "",
     updateInitialIndicatorSize: false,
     indicatorTitle: "",
-    
+    propertiesData: undefined,
+    nationalGridData: undefined,
 
     dist_ref: [
       "KARENGA",
