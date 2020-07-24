@@ -4,6 +4,7 @@ import {
   updateLandCoverGridData,
   updateIndicatorSize,
   updateIndicatorSizeSuccess,
+  updatedmapData
 } from "../actions/actionTypes/actionTypes";
 import AppState from "../applicationState";
 
@@ -20,6 +21,12 @@ const mapReducer = (state = AppState.initialMapState, action) => {
         ...state,
         updatedMapGrids: action.payload,
         mapUpdated: true,
+      };
+      case updatedmapData:
+      return {
+        ...state,
+        propertiesData: action.payload,
+        nationalGridData: action.nationalGridData,
       };
     case updateLandCoverGridData:
       return {

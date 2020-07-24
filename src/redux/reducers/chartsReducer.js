@@ -1,9 +1,6 @@
 import AppState from "../applicationState";
 import {
   updatePieChartIndicators,
-  updatePieChartData,
-  updatePieChartDataSuccess,
-  updatePopulationChartData,
   updateChartView,
   updateChartViewSuccess,
 } from "../actions/actionTypes/actionTypes";
@@ -14,25 +11,6 @@ const chartReducer = (state = AppState.initialChartState, action) => {
       return {
         ...state,
         piechartIndicators: action.payload,
-      };
-    case updatePieChartData:
-      return {
-        ...state,
-        pieChartData: action.payload,
-        pieChartDataUpdated: true,
-      };
-    case updatePopulationChartData:
-      return {
-        ...state,
-        populationChartData: action.payload,
-        populationAverageNationalGridcells:
-          action.populationAverageNationalGridcells,
-      };
-
-    case updatePieChartDataSuccess:
-      return {
-        ...state,
-        pieChartDataUpdated: action.payload,
       };
     case updateChartViewSuccess:
       return {

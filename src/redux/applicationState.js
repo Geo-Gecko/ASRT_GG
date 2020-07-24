@@ -15,6 +15,8 @@ const AppState = {
     initialIndicatorSize: "",
     updateInitialIndicatorSize: false,
     indicatorTitle: "",
+    propertiesData: undefined,
+    nationalGridData: undefined,
 
     dist_ref: [
       "KARENGA", "KITGUM", "AGAGO", "KOTIDO", "ABIM", "OTUKE", "KAPELEBYONG",
@@ -45,9 +47,39 @@ const AppState = {
     updatedPieChart: [],
     pieChartDataUpdated: false,
     populationChartData: [],
+    rainfallChartData: [],
+    cropHealthChartData: [],
+    temperatureChartData: [],
+    temperatureNationalGridcells: [],
+    cropHealthNationalGridcells: [],
+    vegetationHealthChartData: [],
     chartView: false,
     averagenationalGridcells: [],
     populationAverageNationalGridcells: [],
+    rainfallNationalGridcells: [],
+    vegetationHealthNationalGridcells: [],
+    temperalChartFn: function (data_) {
+      let datasets = [];
+      let backColors = {
+        backgroundColor: ["rgba(255,99,132,0.2)", "rgba(75,192,192,1)"],
+        borderColor: ["rgba(255,99,132,1)", "rgba(75,192,192,1)"]
+      }
+      Object.keys(data_).forEach((key_, index) => {
+        datasets.push({
+          label: key_,
+          fill: false,
+          backgroundColor: backColors.backgroundColor[index],
+          borderColor: backColors.borderColor[index],
+          borderWidth: 2,
+          data: data_[key_]
+        })
+      })
+      return {
+        labels: ['Q1', 'Q2', 'Q3',
+          'Q4'],
+        datasets: [...datasets]
+      }
+    }
   },
   initialLocationState: {
     locationValue: [],

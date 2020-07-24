@@ -112,6 +112,8 @@ class CustomizedSlider extends React.Component {
         <Nouislider
           start={value}
           key={sliderKey}
+          // Display colored bars between handles
+          connect={true}
           range={range}
           tooltips={false}
           onChange={this.onSlide}
