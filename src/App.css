@@ -281,3 +281,12 @@ path.leaflet-interactive {
 h5 {
   font-size: 1rem;
 }
+
+.loadingScreen {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
