@@ -74,22 +74,7 @@ class Temperature extends React.Component {
     temperatureNationalGridcells[1] = lst_amj_value;
     temperatureNationalGridcells[2] = lst_jas_value;
     temperatureNationalGridcells[3] = lst_ond_value;
-    temperaturechartData = temperaturechartData.map(
-      (each_temperature_value) => {
-        if (each_temperature_value !== null) {
-          return Number(each_temperature_value.toFixed(2));
-        }
-        return true;
-      }
-    );
-    temperatureNationalGridcells = temperatureNationalGridcells.map(
-      (each_temperature_value) => {
-        if (each_temperature_value !== null) {
-          return Number(each_temperature_value.toFixed(2));
-        }
-        return true;
-      }
-    );
+    
     const options = {
       legend: {
         display: true,

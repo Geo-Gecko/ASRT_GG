@@ -75,21 +75,6 @@ class Ndwilinegraph extends React.Component {
     cropHealthNationalGridcells[1] = ndwi_amj_value;
     cropHealthNationalGridcells[2] = ndwi_jas_value;
     cropHealthNationalGridcells[3] = ndwi_ond_value;
-
-    cropHealthchartData = cropHealthchartData.map((each_cropHealth_value) => {
-      if (each_cropHealth_value !== null) {
-        return Number(each_cropHealth_value.toFixed(2));
-      }
-      return true;
-    });
-    cropHealthNationalGridcells = cropHealthNationalGridcells.map(
-      (each_cropHealth_value) => {
-        if (each_cropHealth_value !== null) {
-          return Number(each_cropHealth_value.toFixed(2));
-        }
-        return true;
-      }
-    );
     const options = {
       legend: {
         display: true,

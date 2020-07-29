@@ -75,22 +75,6 @@ class Ndvilinegraph extends React.Component {
     vegetationHealthNationalGridcells[2] = ndvi_jas_value;
     vegetationHealthNationalGridcells[3] = ndvi_ond_value;
 
-    vegetationHealthchartData = vegetationHealthchartData.map(
-      (each_vegetationHealth_value) => {
-        if (each_vegetationHealth_value !== null) {
-          return Number(each_vegetationHealth_value.toFixed(2));
-        }
-        return true;
-      }
-    );
-    vegetationHealthNationalGridcells = vegetationHealthNationalGridcells.map(
-      (each_vegetationHealth_value) => {
-        if (each_vegetationHealth_value !== null) {
-          return Number(each_vegetationHealth_value.toFixed(2));
-        }
-        return true;
-      }
-    );
     const options = {
       legend: {
         display: true,

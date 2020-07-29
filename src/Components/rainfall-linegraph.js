@@ -72,21 +72,6 @@ class Rainfall extends React.Component {
     rainfallNationalGridcells[1] = presp_amj_value;
     rainfallNationalGridcells[2] = presp_jas_value;
     rainfallNationalGridcells[3] = presp_ond_value;
-
-    rainfallchartData = rainfallchartData.map((each_rainfall_value) => {
-      if (each_rainfall_value !== null) {
-        return Number(each_rainfall_value.toFixed(2));
-      }
-      return true;
-    });
-    rainfallNationalGridcells = rainfallNationalGridcells.map(
-      (each_rainfall_value) => {
-        if (each_rainfall_value !== null) {
-          return Number(each_rainfall_value.toFixed(2));
-        }
-        return true;
-      }
-    );
     
     const options = {
       legend: {
