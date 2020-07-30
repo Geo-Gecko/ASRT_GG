@@ -59,7 +59,8 @@ class RadioButtons extends React.Component {
         </div>
       );
     } else {
-      this.radioComponent = this.radioComponent;
+      let defaultRadioComponent = this.radioComponent;
+      this.radioComponent = defaultRadioComponent;
     }
     return (
       <FormControl component="fieldset">
