@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import CustomizedSlider from "./Slider";
 import LandCover from "./Landcover";
+import RadioButtons from "./radio";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -84,33 +86,12 @@ export default function ControlledExpansionPanels() {
           id="panel3bh-header"
         >
           <Typography className={classes.heading}>
-            Soil Moisture and Rainfall
+            Climate Indicators
           </Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Soil Moisture" sliderKey={8} />
-            <CustomizedSlider IndicatorSlider="Rainfall" sliderKey={9} />
-          </div>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
-        expanded={expanded === "panel4"}
-        onChange={handleChange("panel4")}
-      >
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel4bh-content"
-          id="panel4bh-header"
-        >
-          <Typography className={classes.heading}>Vegetation Health</Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <div className={classes.spacing}>
-            <CustomizedSlider
-              IndicatorSlider=""
-              sliderKey={10}
-            />
+            <RadioButtons />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>
@@ -146,28 +127,8 @@ export default function ControlledExpansionPanels() {
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="Slope" sliderKey={11} />
-
-            <CustomizedSlider IndicatorSlider="Elevation" sliderKey={12} />
-          </div>
-        </ExpansionPanelDetails>
-      </ExpansionPanel>
-      <ExpansionPanel
-        expanded={expanded === "panel7"}
-        onChange={handleChange("panel7")}
-      >
-        <ExpansionPanelSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel5bh-content"
-          id="panel5bh-header"
-        >
-          <Typography className={classes.heading}>
-            Land Surface Temperature
-          </Typography>
-        </ExpansionPanelSummary>
-        <ExpansionPanelDetails>
-          <div className={classes.spacing}>
-            <CustomizedSlider IndicatorSlider="" sliderKey={13} />
+            <CustomizedSlider IndicatorSlider="Slope" sliderKey={20} />
+            <CustomizedSlider IndicatorSlider="Elevation" sliderKey={21} />
           </div>
         </ExpansionPanelDetails>
       </ExpansionPanel>

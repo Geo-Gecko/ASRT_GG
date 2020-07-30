@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import _ from "lodash";
 import {
   Map,
   TileLayer,
@@ -10,9 +9,8 @@ import { connect } from "react-redux";
 
 import LoadingScreen from "./loadingScreen";
 import {
-  updatePieChartData,
   updateChartView,
-  updatePopulationChartData,
+  updatedmapData,
 } from "../redux/actions/actionTypes/actionTypes";
 import { getMapGrids } from "../redux/actions/mapAction";
 import { getLocation } from "../redux/actions/locationActions";
@@ -104,99 +102,13 @@ class UgMap extends Component {
       }
     });
 
-    this.populationchartData = _.cloneDeep(this.props.populationchartData);
-    this.piechartData = _.cloneDeep(this.props.piechartData);
-
-    this.populationAverageNationalGridcells = _.cloneDeep(
-      this.props.populationAverageNationalGridcells
-    );
     this.propertiesData = propertiesArray;
-    this.rainfallValue = 0;
-    this.nationalGridValue = 0;
-    this.populationValue = 0;
-    this.PopulationNationalGridValue = 0;
-    this.copperValue = 0;
-    this.alumiValue = 0;
-    this.phosValue = 0;
-    this.potasValue = 0;
-    this.boronValue = 0;
-    this.ironValue = 0;
-    this.magneValue = 0;
     this.nationalGridcells = districtsdata.features;
-    this.nationalGridcells.forEach((nationalGridcell) => {
-      for (let [sliderK, val] of Object.entries(
-        nationalGridcell["properties"]
-      )) {
-        if (sliderK === "ppp_sum") {
-          this.PopulationNationalGridValue += val;
-        }
-      }
-      return true
-    });
-    this.propertiesData.filter((rfs) => {
-      for (let [sliderK, val] of Object.entries(rfs)) {
-        if (sliderK === "ppp_sum") {
-          this.populationValue += val;
-        } else if (sliderK === "soil_copper") {
-          this.copperValue += val;
-        } else if (sliderK === "soil_alumi") {
-          this.alumiValue += val;
-        } else if (sliderK === "soil_phos") {
-          this.phosValue+= val;
-        } else if (sliderK === "soil_potas") {
-          this.potasValue += val;
-        } else if (sliderK === "soil_boron") {
-          this.boronValue += val;
-        } else if (sliderK === "soil_iron") {
-          this.ironValue+= val;
-        } else if (sliderK === "soil_magne") {
-          this.magneValue += val;
-        }
-      }
-      return true;
-    });
-    this.populationFinalValue = this.populationValue / this.propertiesData.length;
-    this.populationFinalNationalValue =
-      this.PopulationNationalGridValue / this.nationalGridcells.length;
-    if (this.populationValue !== 0) {
-      this.populationchartData[0] = this.populationFinalValue.toFixed(2);
-      this.populationAverageNationalGridcells[0] = this.populationFinalNationalValue.toFixed(
-        2
-      );
-    }
-    this.props.dispatch({
-      type: updatePopulationChartData,
-      payload: this.populationchartData,
-      populationAverageNationalGridcells: this
-        .populationAverageNationalGridcells,
-    });
-    this.copperValue = (this.copperValue / this.propertiesData.length).toFixed(2);
-    this.alumiValue = (this.alumiValue / this.propertiesData.length).toFixed(2);
-    this.phosValue = (this.phosValue / this.propertiesData.length).toFixed(2);
-    this.potasValue = (this.potasValue / this.propertiesData.length).toFixed(2);
-    this.boronValue = (this.boronValue / this.propertiesData.length).toFixed(2);
-    this.ironValue = (this.ironValue / this.propertiesData.length).toFixed(2);
-    this.magneValue = (this.magneValue / this.propertiesData.length).toFixed(2);
-
-    this.UpdatedIndicators = this.props.updatePieChartIndicators;
-    let pieChartValuesObject = {
-      "soil_copper": this.copperValue, "soil_alumi": this.alumiValue,
-      "soil_phos": this.phosValue, "soil_potas": this.potasValue,
-      "soil_boron": this.boronValue, "soil_iron": this.ironValue,
-      "soil_magne": this.magneValue
-    }
-
-    Object.keys(pieChartValuesObject).forEach(key_ => {
-      if (this.UpdatedIndicators.includes(key_)) {
-        this.piechartData[
-          this.UpdatedIndicators.indexOf(key_)
-        ] = pieChartValuesObject[key_];
-      }
-    })
 
     this.props.dispatch({
-      type: updatePieChartData,
-      payload: this.piechartData,
+      type: updatedmapData,
+      payload: this.propertiesData,
+      nationalGridData: this.nationalGridcells,
     });
 
     const district = this.refs.geojson.leafletElement;
@@ -294,12 +206,6 @@ const mapStateToProps = (state) => {
     locationValue: state.location.locationValue,
     sliderValue: state.slider.sliderValue,
     mapUpdated: state.map.mapUpdated,
-    populationchartData: state.chart.populationChartData,
-    populationAverageNationalGridcells:
-      state.chart.populationAverageNationalGridcells,
-    piechartData: state.chart.pieChartData,
-    updatePieChartIndicators: state.chart.piechartIndicators,
-    pieChartDataUpdated: state.chart.pieChartDataUpdated,
   };
 };
 
