@@ -58,8 +58,6 @@ class RadioButtons extends React.Component {
           <CustomizedSlider IndicatorSlider="Temperature" sliderKey={25} />
         </div>
       );
-    } else {
-      this.radioComponent = this.radioComponent;
     }
     return (
       <FormControl component="fieldset">

@@ -90,11 +90,11 @@ const AppState = {
     indicators: {
       0: "ppp_sum", 1: "soil_copper", 2: "soil_phos", 3: "soil_potas",
       4: "soil_boron", 5: "soil_alumi", 6: "soil_iron", 7: "soil_magne",
-      8: "ndwi_jfm", 9: "presp_jfm", 10: "ndvi_jfm", 11: "slope",
-      12: "elevation", 13: "lst_jfm", 14: "presp_jas", 15: "presp_ond",
+      8: "ndwi_jfm", 9: "ndwi_amj", 10: "ndwi_jas", 11: "ndwi_ond",
+      12: "presp_jfm", 13: "presp_amj", 14: "presp_jas", 15: "presp_ond",
       16: "ndvi_jfm", 17: "ndvi_amj", 18: "ndvi_jas", 19: "ndvi_ond",
-      20: "slope", 21: "elevation", 22: "lst_jfm", 23: "lst_amj",
-      24: "lst_jas", 25: "lst_ond",
+      20: "slope", 21: "elevation", 22: "lst_jfm", 23: "lst_amj", 24: "lst_jas",
+      25: "lst_ond",
     },
     land_cover: {
       1: "land_cover",
